@@ -1,3 +1,5 @@
+export type LotStatus = 'LIVE' | 'FINISHED' | 'CANCELLED' | 'SCHEDULED'
+
 export interface PublicLot {
   id: string
   externalItemId: string
@@ -7,7 +9,7 @@ export interface PublicLot {
   minimumIncrement: string
   startTime: string
   endTime: string
-  status: string
+  status: LotStatus
   creatorId: string
   _count: {
     bids:	number

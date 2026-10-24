@@ -7,9 +7,15 @@ export default function useListLots() {
     queryKey: ['public-lots'],
     queryFn: async () => await listPublicLotsActions()
   })
+  
+  const liveLots = lots.filter((lot) => lot.status === 'LIVE')
+  const scheduledLots = lots.filter((lot) => lot.status === 'SCHEDULED')
+  const finishedLots = lots.filter((lot) => lot.status === 'FINISHED')
 
   return {
-    lots,
+    liveLots,
+    scheduledLots,
+    finishedLots,
     isPending,
     isError
   }
