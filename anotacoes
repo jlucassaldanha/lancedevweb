@@ -1,0 +1,6 @@
+uso de shadcn por conta dos componentes personalizaveis
+uso de stitch para criar esboço de telas iniciais
+gemini para gerar boilerplate e consultoria para decisões e planejamento
+uso de tanstack react hook form e zod
+mudança de temas aplicadas
+grande parte da base do front como providers e funbções utilitarias foram tiradas de outros códigos que já fiz como ticketdev
