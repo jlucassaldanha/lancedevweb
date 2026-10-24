@@ -1,3 +1,5 @@
+"use client"
+
 import { PublicLot } from "@/types/lots";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
@@ -13,19 +15,22 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
     <div className="w-full flex gap-14">
       <div className="flex flex-col gap-5">
         {lot.status === 'LIVE' && <Badge>Ao vivo</Badge>}
-        <Image 
-          src={lot.imageUrl}
-          alt={lot.title}
-          width={600}
-          height={600}
-        />
+        <div className="w-full aspect-square relative bg-muted/30 rounded-md overflow-hidden flex items-center justify-center">
+          <Image 
+            src={lot.imageUrl}
+            alt={lot.title}
+            width={600}
+            height={600}
+            className="object-contain p-2"
+          />
+        </div>
       </div>
 
       <div className="flex flex-col gap-5 w-2/4">
         <span className="text-5xl">{lot.title}</span>
         <Separator />
         <div className="flex flex-col justify-between h-full">
-          <Badge variant="secondary">{status}</Badge>
+          <Badge variant="secondary" className="mt-5">{status}</Badge>
 
 
           <div className="flex gap-10 items-center">
@@ -42,7 +47,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
         </div>
 
         <div className="flex gap-5 mt-10">
-          {lot.status === "FINISHED" && <Button>Ver Ao Vivo</Button>}
+          {lot.status === "LIVE" && <Button>Ver Ao Vivo</Button>}
           <Button variant="outline">Ver Laudo</Button>
         </div>
       </div>

@@ -1,5 +1,6 @@
 "use client"
 
+import { CarouselLotCard } from "@/components/my-components/CarouselLotCard";
 import { MainLotCard } from "@/components/my-components/MainLotCard";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
@@ -30,68 +31,87 @@ export default function Home() {
           </TabsList>
 
           <TabsContent value="LIVE">
-            {liveLots.map((lot) => (
-              <div key={lot.id}>
-                {lot.title}
-                <Image 
-                  src={lot.imageUrl}
-                  alt={lot.title}
-                  width={400}
-                  height={400}
-                />
-              </div>
-            ))}
+            <div className="w-full flex flex-col gap-5 mt-5">
+              {liveLots.length > 0 ? (
+                <MainLotCard lot={liveLots[0]} />
+              ) : (
+                <span>Não há lotes publicados Ao vivo nesse momento</span>
+              )}
+
+              {liveLots.length > 1 && (
+                <div>
+                  <Separator className="my-10"/>
+                  <Carousel opts={{ align: "start" }} >
+                    <CarouselContent>
+                      {liveLots.slice(1).map((lot) => (
+                        <CarouselItem key={lot.id} className="basis-1/2 lg:basis-1/4">
+                          <CarouselLotCard lot={lot}/>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                </div>
+              )}
+            </div>
           </TabsContent>
 
           <TabsContent value="SCHEDULED">
-            {scheduledLots.map((lot) => (
-              <div key={lot.id}>
-                {lot.title}
-                <Image 
-                  src={lot.imageUrl}
-                  alt={lot.title}
-                  width={400}
-                  height={400}
-                />
-              </div>
-            ))}
+            <div className="w-full flex flex-col gap-5 mt-5">
+              {scheduledLots.length > 0 ? (
+                <MainLotCard lot={scheduledLots[0]} />
+              ) : (
+                <span>Não há lotes programados</span>
+              )}
+
+              {scheduledLots.length > 1 && (
+                <div>
+                  <Separator className="my-10"/>
+                  <Carousel opts={{ align: "start" }} >
+                    <CarouselContent>
+                      {scheduledLots.slice(1).map((lot) => (
+                        <CarouselItem key={lot.id} className="basis-1/2 lg:basis-1/4">
+                          <CarouselLotCard lot={lot}/>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                </div>
+              )}
+            </div>
           </TabsContent>
 
           <TabsContent value="FINISHED">
             <div className="w-full flex flex-col gap-5 mt-5">
-              <MainLotCard lot={finishedLots[0]} />
+              {finishedLots.length > 0 ? (
+                <MainLotCard lot={finishedLots[0]} />
+              ) : (
+                <span>Não há lotes publicados Ao vivo nesse momento</span>
+              )}
 
-              <Separator className="mt-10"/>
-              <div>
-                <Carousel
-                  opts={{
-                    align: "start"
-                  }}
-                >
-                  <CarouselContent>
-                    {finishedLots.slice(1).map((lot) => (
-                      <CarouselItem key={lot.id} className="basis-1/2 lg:basis-1/3">
-                        {lot.title}
-                        <Image 
-                          src={lot.imageUrl}
-                          alt={lot.title}
-                          width={400}
-                          height={400}
-                        />
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </Carousel>
-              </div>
-              
+              {finishedLots.length > 1 && (
+                <div>
+                  <Separator className="my-10"/>
+                  <Carousel opts={{ align: "start" }} >
+                    <CarouselContent>
+                      {finishedLots.slice(1).map((lot) => (
+                        <CarouselItem key={lot.id} className="basis-1/2 lg:basis-1/4">
+                          <CarouselLotCard lot={lot}/>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                </div>
+              )}
             </div>
-            
           </TabsContent>
         </Tabs>
       </div>
-      
     </div>
   );
 }
