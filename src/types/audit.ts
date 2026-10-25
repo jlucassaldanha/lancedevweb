@@ -10,7 +10,7 @@ export interface AuditInfo {
 export interface AuditDetails {
   id: string
   amount: string
-  createdAt: Date
+  createdAt: string
   storedHash: string
   calculatedHash: string
   previousHash: string

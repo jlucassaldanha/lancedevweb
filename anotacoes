@@ -7,6 +7,7 @@ grande parte da base do front como providers e funbções utilitarias foram tira
 pedir ao backend maior lance na lista publica
 pedir ao backend nomes dos lances na auditoria e imagem
 lotes sem lances encontran-se como integros
+consciencia de que foram usadas muitas strings vazias por conta do tempo
 
 paginas feitas
 login/registro

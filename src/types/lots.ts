@@ -19,3 +19,13 @@ export interface PublicLot {
     bids:	number
   }	
 }
+
+export interface LotReceipt {
+  lotId: string
+  title: string
+  imageUrl: string
+  amount?: string,
+  closedAt: string,
+  winnerName?: string
+  message?: string
+}
