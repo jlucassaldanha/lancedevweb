@@ -55,7 +55,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
         </div>
 
         <div className="flex gap-5 mt-10">
-          {lot.status === "LIVE" && <Button>Ver Ao Vivo</Button>}
+          {lot.status === "LIVE" && <Button onClick={() => redirect(`/live/${lot.id}`)}>Ver Ao Vivo</Button>}
           <Button variant="secondary" onClick={() => redirect(`/laudo/${lot.id}`)}>Ver Laudo</Button>
         </div>
       </div>

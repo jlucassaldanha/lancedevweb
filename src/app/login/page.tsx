@@ -91,7 +91,7 @@ export default function LoginPage() {
           <CardTitle>Acesso rápido de teste</CardTitle>
         </CardHeader>
 
-        <CardContent className='flex flex-col md:flex-row gap-2 w-full'>
+        <CardContent className='flex flex-col gap-2 w-full'>
           <Button 
             onClick={() => fillWithTestUser('leiloeiro@leilodedev.com')}
           >

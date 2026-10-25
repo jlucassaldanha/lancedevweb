@@ -1,3 +1,4 @@
+import { string } from "zod"
 import { Bid } from "./bid"
 
 export type LotStatus = 'LIVE' | 'FINISHED' | 'CANCELLED' | 'SCHEDULED'
@@ -28,4 +29,34 @@ export interface LotReceipt {
   closedAt: string,
   winnerName?: string
   message?: string
+}
+
+export interface LiveLot {
+  serverTime: string
+  lot: {
+    id: string
+    title: string
+    imageUrl: string
+    startingBid: string
+    minimumIncrement: string
+    startTime: string
+    endTime: string
+    status: LotStatus
+  },
+  currentLeader?: {
+    amount: string,
+    bidderName: string
+  },
+  userStatus: {
+    isWinning: boolean
+  },
+  bidsHistory: 
+    {
+      id: string,
+      amount: string,
+      createdAt: string,
+      bidderName: string,
+      isUserBid: boolean
+    }[]
+  
 }
