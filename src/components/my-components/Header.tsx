@@ -3,11 +3,23 @@
 import Link from "next/link";
 import { LogoLanceDev } from "./LogoLanceDev";
 import { Button } from "../ui/button";
-import { redirect } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { ThemeButton } from "./ThemeButton";
+import { useAuth } from "@/contexts/authContext";
+import { logoutAction } from "@/actions/auth";
 
 export function Header() {
-  const user = false
+  const pathName = usePathname()
+
+  const auth = useAuth()
+
+  const accountLink = auth.user?.role === "LICITANTE" ? "/arremates": "/dashboard"
+
+  if (pathName === '/login' || pathName === '/register') {
+    return null
+  }
+
+  const user = auth.user
 
   return (
     <div className="flex justify-between items-center mb-4 px-10 py-6">
@@ -20,7 +32,13 @@ export function Header() {
       <div className="flex gap-2">
         {user ? (
           <div className='flex justify-center items-center'>
-            Nome e botão de sair
+            <Link href={accountLink}>
+              <span className='font-bold'>Olá, {user?.name}</span>
+            </Link>
+
+            <Button onClick={logoutAction} className='ml-4'>
+              Sair
+            </Button>
           </div>
         ) : (
           <Button onClick={() => redirect('/login')}>
