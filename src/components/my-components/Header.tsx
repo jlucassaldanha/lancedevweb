@@ -22,9 +22,9 @@ export function Header() {
   const user = auth.user
 
   return (
-    <div className="flex justify-between items-center mb-4 px-10 py-6">
+    <div className="flex flex-col md:flex-row justify-between md:items-center mb-4 px-4 md:px-10 py-6 gap-2">
       <Link href={'/'}>
-        <div className='md:text-3xl'>
+        <div className='text-3xl'>
           <LogoLanceDev />
         </div>
       </Link>

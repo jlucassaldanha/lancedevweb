@@ -4,6 +4,7 @@ import { CarouselLotCard } from "@/components/my-components/CarouselLotCard";
 import { MainLotCard } from "@/components/my-components/MainLotCard";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
+import { Spinner } from "@/components/ui/spinner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useListLots from "@/hooks/useListLots";
 
@@ -17,8 +18,14 @@ export default function Home() {
     error 
   } = useListLots()
 
+  if (isPending) return (
+    <div className="flex w-full h-screen justify-center items-center p-10">
+      <Spinner className="size-15 text-primary" />
+    </div>
+  ) 
+
   return (
-    <div className='flex flex-col gap-5 px-10'>
+    <div className='flex flex-col gap-5 px-4 md:px-10'>
       
       <div className="mb-5">
         <Tabs defaultValue="LIVE">
@@ -42,7 +49,7 @@ export default function Home() {
                   <Carousel opts={{ align: "start" }} >
                     <CarouselContent>
                       {liveLots.slice(1).map((lot) => (
-                        <CarouselItem key={lot.id} className="basis-1/2 lg:basis-1/4">
+                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/4">
                           <CarouselLotCard lot={lot}/>
                         </CarouselItem>
                       ))}
@@ -69,7 +76,7 @@ export default function Home() {
                   <Carousel opts={{ align: "start" }} >
                     <CarouselContent>
                       {scheduledLots.slice(1).map((lot) => (
-                        <CarouselItem key={lot.id} className="basis-1/2 lg:basis-1/4">
+                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/4">
                           <CarouselLotCard lot={lot}/>
                         </CarouselItem>
                       ))}
@@ -96,7 +103,7 @@ export default function Home() {
                   <Carousel opts={{ align: "start" }} >
                     <CarouselContent>
                       {finishedLots.slice(1).map((lot) => (
-                        <CarouselItem key={lot.id} className="basis-1/2 lg:basis-1/4">
+                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/4">
                           <CarouselLotCard lot={lot}/>
                         </CarouselItem>
                       ))}

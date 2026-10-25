@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Lora, Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import AppProvider from "./providers";
@@ -11,6 +11,11 @@ const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 export const instant = false;
 
+const fontSans = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-sans", // Adicione os pesos para o Tailwind reconhecer font-bold, etc.
+})
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -20,6 +25,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const fontSerif = Lora({
+  subsets: ["latin"],
+  variable: "--font-serif",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,7 +42,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn("h-full", "antialiased", fontSans.variable, fontSans.variable, "font-sans", inter.variable, fontSerif.variable)}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col lg:px-50">
