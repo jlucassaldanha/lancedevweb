@@ -16,7 +16,7 @@ export function AuditCard({ comprovante, audit, position }: AuditCardProps) {
       <div className="flex flex-col gap-1 w-full">
         <div className="w-full flex justify-between">
           <div className="flex flex-col gap-2">
-            {!comprovante && (<span className="text-2xl font-bold text-secondary">#{position} • {audit?.bidderName}</span>)}
+            {!comprovante && (<span className="text-2xl font-bold text-secondary font-serif">#{position} • {audit?.bidderName}</span>)}
         
             <div className="w-full flex">
               <div className={`flex ${audit?.isValid ? "text-green-400" : "text-red-400"} gap-2`}>
@@ -27,7 +27,7 @@ export function AuditCard({ comprovante, audit, position }: AuditCardProps) {
               </div>
             </div>
           </div>
-          {!comprovante && <span className="text-2xl">R$ {Number(audit?.amount).toFixed(2)}</span>}
+          {!comprovante && <span className="text-2xl font-serif">R$ {Number(audit?.amount).toFixed(2)}</span>}
         </div>
         
 
@@ -44,7 +44,7 @@ export function AuditCard({ comprovante, audit, position }: AuditCardProps) {
               
               <CardContent className="flex flex-col w-full py-5 gap-1">
                 <div className="inline-block wrap-break-word">
-                  <span className="font-bold text-secondary">Hash Anterior:</span> 
+                  <span className="font-bold text-secondary font-seri">Hash Anterior:</span> 
                   <span> {audit?.previousHash}</span>
                 </div>
                 <div className="inline-block wrap-break-word">

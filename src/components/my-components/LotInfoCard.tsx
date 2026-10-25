@@ -29,7 +29,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
       </div>
 
       <div className="flex flex-col gap-5 md:w-2/4">
-        <span className="text-5xl">{title}</span>
+        <span className="text-5xl font-serif">{title}</span>
         <Separator />
 
         {comprovante ? (
@@ -37,7 +37,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
             {receiptData?.message ? (
               <div className="w-full flex flex-col gap-5">
                 <div className="w-full font-bold text-primary">
-                  Finalizado em: {new Date(receiptData.closedAt).toLocaleDateString('pt-BR')}, {new Date(receiptData.closedAt).toLocaleTimeString('pt-BR')}
+                  Finalizado em: <span className="font-serif">{new Date(receiptData.closedAt).toLocaleDateString('pt-BR')}, {new Date(receiptData.closedAt).toLocaleTimeString('pt-BR')}</span>
                 </div>
 
                 <Alert className="text-orange-400">
@@ -54,7 +54,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
             ) : (
               <div className="w-full flex flex-col gap-5">
                 <div className="w-full font-bold text-primary">
-                  Finalizado em: {new Date(receiptData?.closedAt || "").toLocaleDateString('pt-BR')}, {new Date(receiptData?.closedAt || "").toLocaleTimeString('pt-BR')}
+                  Finalizado em: <span className="font-serif">{new Date(receiptData?.closedAt || "").toLocaleDateString('pt-BR')}, {new Date(receiptData?.closedAt || "").toLocaleTimeString('pt-BR')}</span>
                 </div>
 
                 <Alert className={auditData?.isIntegrityIntact ? "text-green-400" : "text-red-400"}>
@@ -67,12 +67,12 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
                 <div className="flex justify-between">
                   <div className="flex flex-col gap-2"> 
                     <span>Lance Vencedor</span>
-                    <span className="text-2xl">R$ {Number(receiptData?.amount || 0).toFixed(2)}</span>
+                    <span className="text-2xl font-serif">R$ {Number(receiptData?.amount || 0).toFixed(2)}</span>
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <span>Vencedor</span>
-                    <span>{receiptData?.winnerName}</span>
+                    <span className="font-serif">{receiptData?.winnerName}</span>
                   </div>
                 </div>
               </div>

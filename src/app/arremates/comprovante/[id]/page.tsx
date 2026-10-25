@@ -40,8 +40,8 @@ export default function ComprovantePage() {
       />
 
       {!receiptData?.message && (
-        <div className="w-full flex flex-col gap-2 mt-5">        
-          <Separator />
+        <div className="w-full flex flex-col gap-2">        
+          <Separator className="my-5"/>
 
           <AuditCard 
             comprovante

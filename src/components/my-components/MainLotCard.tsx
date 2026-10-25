@@ -27,7 +27,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
       </div>
 
       <div className="flex flex-col gap-5 md:w-2/4">
-        <span className="text-5xl">{lot.title}</span>
+        <span className="text-5xl font-serif">{lot.title}</span>
         <Separator />
         <div className="flex flex-col justify-between h-full">
           <Badge variant="secondary" className="mt-5">{status}</Badge>
@@ -37,19 +37,19 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
             {lot._count.bids > 0 ? (
               <div className="flex flex-col gap-2"> 
                 <span>Maior Lance</span>
-                <span className="text-2xl">R$ {Number(lot.bids[0].amount).toFixed(2)}</span>
+                <span className="text-2xl font-serif">R$ {Number(lot.bids[0].amount).toFixed(2)}</span>
               </div>
             ) : (
               <div className="flex flex-col gap-2"> 
                 <span>Lance Inicial</span>
-                <span className="text-2xl">R$ {Number(lot.startingBid).toFixed(2)}</span>
+                <span className="text-3xl font-serif">R$ {Number(lot.startingBid).toFixed(2)}</span>
               </div>
             )}
             
 
             <div className="flex flex-col gap-2"> 
               <span>Incremento minimo</span>
-              <span>R$ {Number(lot.minimumIncrement).toFixed(2)}</span>
+              <span className=" text-xl font-serif">R$ {Number(lot.minimumIncrement).toFixed(2)}</span>
             </div>
           </div>
         </div>

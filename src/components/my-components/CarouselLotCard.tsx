@@ -18,7 +18,7 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
         />
       </div>
       
-      <span className="text-3xl">{lot.title}</span>
+      <span className="text-3xl font-serif">{lot.title}</span>
 
       <Separator />
       
@@ -26,12 +26,12 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
         <div className="flex gap-10 items-center">
           <div className="flex flex-col gap-2"> 
             <span>Maior Lance</span>
-            <span className="text-2xl">R$ {Number(lot.winningBid.amount).toFixed(2)}</span>
+            <span className="text-2xl font-serif">R$ {Number(lot.winningBid.amount).toFixed(2)}</span>
           </div>
 
           <div className="flex flex-col gap-2"> 
             <span>Incremento minimo</span>
-            <span>R$ {Number(lot.minimumIncrement).toFixed(2)}</span>
+            <span className="font-serif text-xl">R$ {Number(lot.minimumIncrement).toFixed(2)}</span>
           </div>
         </div>
       </div>
