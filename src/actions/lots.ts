@@ -12,6 +12,15 @@ export async function listPublicLotsActions() {
   }
 }
 
+export async function getPublicLotByIdActions(id: string) {
+  try {
+    return await apiFetch<PublicLot>(`/lots/${id}`)
+  } catch (error) {
+    console.error('Erro tentando buscar Lote:', error)
+    throw error
+  }
+}
+
 export async function getReceiptByIdAction(id: string) {
   try {
     return await apiFetch<LotReceipt>(`/lots/${id}/receipt`)

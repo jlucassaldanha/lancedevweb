@@ -17,7 +17,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
       <div className="flex flex-col gap-5">
         <div className="w-full aspect-square relative bg-muted/40 overflow-hidden flex items-center justify-center">
           <Image 
-            src={lot.imageUrl}
+            src={lot.imageUrl || "/placeholder.png"}
             alt={lot.title}
             width={500}
             height={500}
