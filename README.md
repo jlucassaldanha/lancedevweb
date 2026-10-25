@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Desafio Elite Dev 2026 - 2 (Front-end)
 
-## Getting Started
+Este é o repositório do front-end para o desafio da Casa de Leilões online. A interface foi construída para consumir a API REST do sistema, focando em uma experiência de usuário fluida, responsiva e alinhada à identidade visual proposta.
 
-First, run the development server:
+#### Decisões Técnicas e Arquitetura
 
+Para garantir uma interface escalável, manutenível e entregue dentro do prazo, as seguintes decisões fundamentais foram tomadas:
+
+*   **Shadcn UI:** Escolhido como base de componentes pela sua alta capacidade de personalização. Diferente de bibliotecas de componentes tradicionais, o Shadcn permite acesso direto ao código fonte do componente, facilitando a adaptação exata à paleta de cores exigida no desafio (Azul Escuro, Verde Limão, Ciano, etc.).
+*   **TanStack Query, React Hook Form e Zod:** A trindade escolhida para gerenciamento de estado assíncrono e formulários. O TanStack Query facilita o consumo da API e o *caching*, enquanto o React Hook Form aliado ao Zod garante validações de formulário (como login e registro) performáticas e seguras no lado do cliente.
+*   **Prototipação com Stitch:** Utilizado na fase inicial para criar os esboços e wireframes das telas, garantindo que a estrutura visual estivesse sólida antes de iniciar a codificação.
+*   **Reaproveitamento Estrutural:** Para otimizar o tempo de desenvolvimento, grande parte da base estrutural do projeto, como *Providers* (de tema e query) e funções utilitárias, foi reaproveitada de códigos validados de projetos pessoais anteriores (como o *ticketdev*).
+
+#### O que foi feito até agora
+
+A aplicação já contempla as seguintes funcionalidades operacionais:
+
+*   **Sistema de Temas (Dark/Light Mode):** Implementação completa da alternância de temas, utilizando as variáveis CSS baseadas em `oklch` para garantir a identidade visual (fundo Azul Marinho no escuro e base limpa no claro).
+*   **Autenticação:** Telas de Login e Registro perfeitamente funcionais e integradas.
+*   **Vitrine de Lotes:** A tela inicial (pública) exibindo a listagem dos itens leiloados.
+*   **Comprovante de Arremate:** Tela para visualização e compartilhamento do recibo de itens arrematados.
+*   **Laudo / Auditoria:** Página pública para verificação da integridade e histórico de lances de um lote específico.
+
+#### Comportamentos Inesperados e Limitações Conhecidas
+
+Devido ao tempo restrito para a entrega do desafio, os seguintes pontos são de conhecimento técnico e assumidos como *trade-offs* da versão atual:
+
+*   **Lotes sem lances constando como "Íntegros":** Na página de auditoria/laudo, lotes recém-criados que ainda não receberam nenhum lance estão sendo exibidos com a flag de integridade ativa, mesmo não possuindo histórico na cadeia de *hashes* para validar.
+*   **Uso excessivo de Strings Vazias:** Pelo tempo reduzido, algumas tipagens e inicializações de estado precisaram utilizar *strings* vazias (`""`) ao invés de tratamentos mais robustos de `null` ou `undefined`, o que pode gerar uma necessidade de refatoração futura em cenários mais estritos.
+
+#### Como rodar a aplicação localmente
+
+**1. Clone o repositório e instale as dependências:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**2. Configure as variáveis de ambiente:**
+Crie um arquivo `.env` na raiz do projeto apontando para a sua API local (ou de produção):
+```env
+NEXT_PUBLIC_API_URL="http://localhost:3000"
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**3. Inicie o servidor de desenvolvimento:**
+```bash
+npm run dev
+```
+Acesse `http://localhost:3000` no seu navegador.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Decisões Arquiteturais (ADRs)
+As escolhas técnicas estão formalmente documentadas na pasta `docs/adr/`.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Uso de Inteligência Artificial e Reaproveitamento
+O desenvolvimento contou com o auxílio de IA para aceleração de *boilerplate* e consultoria, além do reaproveitamento de componentes base de projetos pessoais. Detalhes completos em [Declaração de Uso de IA](IA_USE.md).
