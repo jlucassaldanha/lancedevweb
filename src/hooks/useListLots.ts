@@ -3,7 +3,7 @@ import { PublicLot } from "@/types/lots";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useListLots() {
-  const { data: lots = [], isPending, isError } = useQuery<PublicLot[]>({
+  const { data: lots = [], isPending, isError, error } = useQuery<PublicLot[]>({
     queryKey: ['public-lots'],
     queryFn: async () => await listPublicLotsActions()
   })
@@ -17,6 +17,7 @@ export default function useListLots() {
     scheduledLots,
     finishedLots,
     isPending,
-    isError
+    isError,
+    error
   }
 }

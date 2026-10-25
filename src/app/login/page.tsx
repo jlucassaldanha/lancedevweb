@@ -6,6 +6,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Field, FieldError } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Toaster } from "@/components/ui/toast"
 import { useAuth } from "@/contexts/authContext"
 import useLogin from "@/hooks/useLogin"
 import Link from "next/link"
@@ -108,6 +109,8 @@ export default function LoginPage() {
           </Button>
         </CardContent>
       </Card>
+
+      <Toaster />
     </div>
   )
 }

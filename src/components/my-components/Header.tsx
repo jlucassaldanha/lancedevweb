@@ -41,9 +41,15 @@ export function Header() {
             </Button>
           </div>
         ) : (
-          <Button onClick={() => redirect('/login')}>
-            Entrar
-          </Button>
+          <div className="flex gap-2"> 
+            <Button onClick={() => redirect('/login')}>
+              Entrar
+            </Button>
+
+            <Button onClick={() => redirect('/register')} variant="secondary">
+              Criar Conta
+            </Button>
+          </div>
         )}
 
         <ThemeButton />

@@ -38,7 +38,7 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
 
       <div className="flex gap-5 mt-5">
         {lot.status === "LIVE" && <Button>Ver Ao Vivo</Button>}
-        <Button variant="outline" onClick={() => redirect(`/laudo/${lot.id}`)}>Ver Laudo</Button>
+        <Button variant="secondary" onClick={() => redirect(`/laudo/${lot.id}`)}>Ver Laudo</Button>
       </div>
     </div>
   )

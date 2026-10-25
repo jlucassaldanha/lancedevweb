@@ -13,10 +13,9 @@ export default function Home() {
     scheduledLots,
     finishedLots, 
     isPending, 
-    isError 
+    isError,
+    error 
   } = useListLots()
-
-  console.log(liveLots)
 
   return (
     <div className='flex flex-col gap-5 px-10'>

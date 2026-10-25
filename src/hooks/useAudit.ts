@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 export function useAudit() {
   const { id } = useParams() as { id: string };
 
-  const { data, isPending, isError } = useQuery<AuditInfo>({
+  const { data, isPending, isError, error } = useQuery<AuditInfo>({
     queryKey: ['audit-lot', id],
     queryFn: async () => await getLotAuditInfoAction(id)
   })
@@ -14,6 +14,7 @@ export function useAudit() {
   return {
     data,
     isPending,
-    isError
+    isError, 
+    error
   }
 }
