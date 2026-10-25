@@ -15,7 +15,7 @@ interface LotInfoCardProps {
 
 export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData }: LotInfoCardProps) {
   return (
-    <div className="w-full flex gap-14">
+    <div className={`w-full gap-5 md:gap-14 flex flex-col ${comprovante ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
       <div className="flex flex-col gap-5">
         <div className="w-full aspect-square relative bg-muted/30 overflow-hidden flex items-center justify-center">
           <Image 
@@ -28,7 +28,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 w-2/4">
+      <div className="flex flex-col gap-5 md:w-2/4">
         <span className="text-5xl">{title}</span>
         <Separator />
 

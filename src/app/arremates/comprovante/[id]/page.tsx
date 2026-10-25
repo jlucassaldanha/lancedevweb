@@ -1,12 +1,10 @@
 "use client"
 
+import { AuditCard } from "@/components/my-components/AuditCard";
 import { LotInfoCard } from "@/components/my-components/LotInfoCard";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
 import useReceipt from "@/hooks/useReceipt";
-import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
-import Image from "next/image";
 
 export default function ComprovantePage() {
   const {
@@ -45,10 +43,10 @@ export default function ComprovantePage() {
         <div className="w-full flex flex-col gap-2 mt-5">        
           <Separator />
 
-          <div>Status: <span className={"flex " + auditDetails?.isValid ? "text-green-400" : 'text-red-400'}>{auditDetails?.isValid ? 'Integro' : 'Fraudado'}</span></div>
-          <span>Hash Anterior: {auditDetails?.previousHash}</span>
-          <span>Hash: {auditDetails?.storedHash}</span>
-          <span>Hash Calculada: {auditDetails?.calculatedHash}</span>
+          <AuditCard 
+            comprovante
+            audit={auditDetails}
+          />
         </div>
       )}        
     </div>
