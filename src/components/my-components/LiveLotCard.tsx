@@ -32,7 +32,7 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
         <span className="text-5xl font-serif">{liveLot?.lot.title}</span>
         <Separator />
 
-        <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col justify-between h-full gap-3">
           <div>
             <Alert className={liveLot?.userStatus.isWinning ? "text-green-400" : "text-red-400"}>
               {liveLot?.userStatus.isWinning ? <CheckCircle2Icon /> : <AlertCircleIcon />}
