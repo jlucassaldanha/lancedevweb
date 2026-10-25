@@ -1,4 +1,7 @@
 import { AuditDetails } from "@/types/audit"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
+import { Button } from "../ui/button"
+import { ChevronDownIcon } from "lucide-react"
 
 interface AuditCardProps {
   comprovante?: boolean
@@ -18,9 +21,23 @@ export function AuditCard({ comprovante, audit, position }: AuditCardProps) {
             {audit?.isValid ? ' Integro' : ' Fraudado'}
           </span>
         </div>
-        <span>Hash Anterior: {audit?.previousHash}</span>
-        <span>Hash: {audit?.storedHash}</span>
-        <span>Hash Calculada: {audit?.calculatedHash}</span>
+
+        <Collapsible>
+          <CollapsibleTrigger
+            render={
+            <Button className="w-full">
+              Mostrar detalhes de integridade
+              <ChevronDownIcon className="ml-auto group-data-panel-open/button:rotate-180" />
+            </Button>}
+          />
+          <CollapsibleContent>
+            <div className="flex flex-col">
+              <span>Hash Anterior: {audit?.previousHash}</span>
+              <span>Hash: {audit?.storedHash}</span>
+              <span>Hash Calculada: {audit?.calculatedHash}</span>
+            </div>
+          </CollapsibleContent>
+        </Collapsible>  
       </div>
       <span className="text-2xl">R$ {Number(audit?.amount).toFixed(2)}</span>
     </div>
