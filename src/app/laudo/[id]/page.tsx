@@ -1,7 +1,6 @@
 "use client"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useAudit } from "@/hooks/useAudit";
 import { AlertCircleIcon, ArrowLeftIcon, CheckCircle2Icon } from "lucide-react";

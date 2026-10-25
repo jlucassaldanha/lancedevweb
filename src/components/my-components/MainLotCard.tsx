@@ -12,8 +12,6 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
     ? 'Ao Vivo' : lot.status === "FINISHED" 
     ? 'Finalizado' : 'Programado'
 
-  
-
   return (
     <div className="w-full flex gap-14">
       <div className="flex flex-col gap-5">
