@@ -21,6 +21,17 @@ export interface PublicLot {
   }	
 }
 
+export interface SimpleLot {
+  id: string
+  title: string
+  imageUrl: string
+  startingBid: string
+  minimumIncrement: string
+  startTime: string
+  endTime: string
+  status: LotStatus
+}
+
 export interface LotReceipt {
   lotId: string
   title: string
@@ -31,18 +42,17 @@ export interface LotReceipt {
   message?: string
 }
 
+export interface BidsHistory {
+  id: string,
+  amount: string,
+  createdAt: string,
+  bidderName: string,
+  isUserBid: boolean
+}
+
 export interface LiveLot {
   serverTime: string
-  lot: {
-    id: string
-    title: string
-    imageUrl: string
-    startingBid: string
-    minimumIncrement: string
-    startTime: string
-    endTime: string
-    status: LotStatus
-  },
+  lot: SimpleLot
   currentLeader?: {
     amount: string,
     bidderName: string
@@ -50,13 +60,5 @@ export interface LiveLot {
   userStatus: {
     isWinning: boolean
   },
-  bidsHistory: 
-    {
-      id: string,
-      amount: string,
-      createdAt: string,
-      bidderName: string,
-      isUserBid: boolean
-    }[]
-  
+  bidsHistory: BidsHistory[]
 }

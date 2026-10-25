@@ -1,14 +1,14 @@
-# 2. Stack de Formulários e Estado (TanStack, RHF e Zod)
+# 0002. Stack de Formulários e Estado (TanStack, RHF e Zod)
 
-**Data:** Outubro de 2026
+* **Status:** Aceito
 
-### Contexto
+* **Contexto:**
 Uma aplicação de leilões lida com muitas entradas de dados (login, criação de lote, depósitos) e necessidades de requisições de estado de rede para manter a vitrine e carteiras atualizadas.
 
-### Decisão
+* **Decisão:**
 Foi escolhida a combinação de **TanStack Query** (React Query), **React Hook Form** e **Zod**.
 
-### Consequências
+* **Consequências:**
 
 *   **Positivas:** 
     *   *TanStack Query:* Removeu a necessidade de gerenciar `isLoading` e `isError` manualmente com `useEffect`, trazendo cache de rotas públicas de brinde.
