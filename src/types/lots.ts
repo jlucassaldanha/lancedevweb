@@ -1,3 +1,5 @@
+import { Bid } from "./bid"
+
 export type LotStatus = 'LIVE' | 'FINISHED' | 'CANCELLED' | 'SCHEDULED'
 
 export interface PublicLot {
@@ -11,6 +13,7 @@ export interface PublicLot {
   endTime: string
   status: LotStatus
   creatorId: string
+  winningBid: Bid
   _count: {
     bids:	number
   }	

@@ -5,3 +5,4 @@ uso de tanstack react hook form e zod
 mudança de temas aplicadas
 grande parte da base do front como providers e funbções utilitarias foram tiradas de outros códigos que já fiz como ticketdev
 pedir ao backend maior lance na lista publica
+pedir ao backend nomes dos lances na auditoria e imagem

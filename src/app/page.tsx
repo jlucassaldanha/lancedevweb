@@ -20,18 +20,18 @@ export default function Home() {
   console.log(liveLots)
 
   return (
-    <div className='flex flex-col gap-5 p-10'>
+    <div className='flex flex-col gap-5 px-10'>
       
-      <div>
+      <div className="mb-5">
         <Tabs defaultValue="LIVE">
-          <TabsList>
+          <TabsList className="mb-5">
             <TabsTrigger value='LIVE'>Ao Vivo</TabsTrigger>
             <TabsTrigger value='SCHEDULED'>Programados</TabsTrigger>
             <TabsTrigger value='FINISHED'>Finalizados</TabsTrigger>
           </TabsList>
 
           <TabsContent value="LIVE">
-            <div className="w-full flex flex-col gap-5 mt-5">
+            <div className="w-full flex flex-col gap-5">
               {liveLots.length > 0 ? (
                 <MainLotCard lot={liveLots[0]} />
               ) : (
@@ -58,7 +58,7 @@ export default function Home() {
           </TabsContent>
 
           <TabsContent value="SCHEDULED">
-            <div className="w-full flex flex-col gap-5 mt-5">
+            <div className="w-full flex flex-col gap-5">
               {scheduledLots.length > 0 ? (
                 <MainLotCard lot={scheduledLots[0]} />
               ) : (
@@ -85,7 +85,7 @@ export default function Home() {
           </TabsContent>
 
           <TabsContent value="FINISHED">
-            <div className="w-full flex flex-col gap-5 mt-5">
+            <div className="w-full flex flex-col gap-5">
               {finishedLots.length > 0 ? (
                 <MainLotCard lot={finishedLots[0]} />
               ) : (

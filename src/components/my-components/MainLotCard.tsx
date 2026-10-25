@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
+import { redirect } from "next/navigation";
 
 export function MainLotCard({ lot }: { lot: PublicLot }) {
   const status = lot.status === "LIVE" 
@@ -14,12 +15,11 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
   return (
     <div className="w-full flex gap-14">
       <div className="flex flex-col gap-5">
-        {lot.status === 'LIVE' && <Badge>Ao vivo</Badge>}
-        <div className="w-full aspect-square relative bg-muted/30 rounded-md overflow-hidden flex items-center justify-center">
+        <div className="w-full aspect-square relative bg-muted/40 overflow-hidden flex items-center justify-center">
           <Image 
             src={lot.imageUrl}
             alt={lot.title}
-            width={600}
+            width={500}
             height={600}
             className="object-contain p-2"
           />
@@ -48,7 +48,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
 
         <div className="flex gap-5 mt-10">
           {lot.status === "LIVE" && <Button>Ver Ao Vivo</Button>}
-          <Button variant="outline">Ver Laudo</Button>
+          <Button variant="outline" onClick={() => redirect(`/laudo/${lot.id}`)}>Ver Laudo</Button>
         </div>
       </div>
     </div>

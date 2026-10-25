@@ -4,11 +4,12 @@ import { PublicLot } from "@/types/lots";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
+import { redirect } from "next/navigation";
 
 export function CarouselLotCard({ lot }: { lot: PublicLot }) {
   return (
     <div className="w-full flex flex-col gap-3">
-      <div className="w-full aspect-square relative bg-muted/30 rounded-md overflow-hidden flex items-center justify-center">
+      <div className="w-full aspect-square relative bg-muted/30 overflow-hidden flex items-center justify-center">
         <Image 
           src={lot.imageUrl}
           alt={lot.title}
@@ -37,7 +38,7 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
 
       <div className="flex gap-5 mt-5">
         {lot.status === "LIVE" && <Button>Ver Ao Vivo</Button>}
-        <Button variant="outline">Ver Laudo</Button>
+        <Button variant="outline" onClick={() => redirect(`/laudo/${lot.id}`)}>Ver Laudo</Button>
       </div>
     </div>
   )
