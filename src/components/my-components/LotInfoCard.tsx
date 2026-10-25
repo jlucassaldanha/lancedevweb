@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
-import { LotReceipt } from "@/types/lots";
+import { LotReceipt, PublicLot } from "@/types/lots";
 import { AuditInfo } from "@/types/audit";
 
 interface LotInfoCardProps {
@@ -10,16 +10,17 @@ interface LotInfoCardProps {
   imgUrl: string
   title: string
   auditData?: AuditInfo
+  lotData?: PublicLot
   receiptData?: LotReceipt
 }
 
-export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData }: LotInfoCardProps) {
+export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData, lotData }: LotInfoCardProps) {
   return (
     <div className={`w-full gap-5 md:gap-14 flex flex-col ${comprovante ? 'md:flex-row-reverse justify-end' : 'md:flex-row'}`}>
       <div className="flex flex-col gap-5">
         <div className="w-full aspect-square relative bg-muted/30 overflow-hidden flex items-center justify-center">
           <Image 
-            src={imgUrl}
+            src={imgUrl || "/placeholder.png"}
             alt={title}
             width={500}
             height={500}
@@ -98,7 +99,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
                 <Alert className="text-orange-400">
                     <AlertCircleIcon />
                   <AlertTitle>
-                    O Lote foi encerrado sem lances
+                    {lotData?.status === 'LIVE' ? "O Lote ainda não possui lances" : "O Lote foi encerrado sem lances"}
                   </AlertTitle>
                 </Alert>
               </div>

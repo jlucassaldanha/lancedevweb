@@ -11,7 +11,7 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
     <div className="w-full flex flex-col gap-3">
       <div className="w-full aspect-square relative bg-muted/30 overflow-hidden flex items-center justify-center">
         <Image 
-          src={lot.imageUrl}
+          src={lot.imageUrl || "/placeholder.png"}
           alt={lot.title}
           fill
           className="object-contain p-2"
@@ -24,20 +24,22 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
       
       <div className="flex flex-col justify-between h-full">
         <div className="flex gap-10 items-center">
-          <div className="flex flex-col gap-2"> 
-            <span>Maior Lance</span>
-            <span className="text-2xl font-serif">R$ {Number(lot.winningBid.amount).toFixed(2)}</span>
-          </div>
-
-          <div className="flex flex-col gap-2"> 
-            <span>Incremento minimo</span>
-            <span className="font-serif text-xl">R$ {Number(lot.minimumIncrement).toFixed(2)}</span>
-          </div>
+          {lot._count.bids > 0 ? (
+              <div className="flex flex-col gap-2"> 
+                <span>Maior Lance</span>
+                <span className="text-2xl font-serif">R$ {Number(lot.bids[0].amount).toFixed(2)}</span>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-2"> 
+                <span>Lance Inicial</span>
+                <span className="text-3xl font-serif">R$ {Number(lot.startingBid).toFixed(2)}</span>
+              </div>
+            )}
         </div>
       </div>
 
       <div className="flex gap-5 mt-5">
-        {lot.status === "LIVE" && <Button>Ver Ao Vivo</Button>}
+        {lot.status === "LIVE" && <Button onClick={() => redirect(`/live/${lot.id}`)}>Ver Ao Vivo</Button>}
         <Button variant="secondary" onClick={() => redirect(`/laudo/${lot.id}`)}>Ver Laudo</Button>
       </div>
     </div>

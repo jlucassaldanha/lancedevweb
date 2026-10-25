@@ -14,6 +14,7 @@ grande parte da base do front como providers e funbções utilitarias foram tira
 problemas conhecidos:
 lotes sem lances encontran-se como integros
 consciencia de que foram usadas muitas strings vazias por conta do tempo
+lotes ao vivo encontra-se como encerrado quando sem lances no laudo
 
 coisas feitas:
 mudança de temas aplicadas

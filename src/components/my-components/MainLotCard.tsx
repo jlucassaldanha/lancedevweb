@@ -17,7 +17,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
       <div className="flex flex-col gap-5">
         <div className="w-full aspect-square relative bg-muted/40 overflow-hidden flex items-center justify-center">
           <Image 
-            src={lot.imageUrl}
+            src={lot.imageUrl || "/placeholder.png"}
             alt={lot.title}
             width={500}
             height={500}
@@ -55,7 +55,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
         </div>
 
         <div className="flex gap-5 mt-10">
-          {lot.status === "LIVE" && <Button>Ver Ao Vivo</Button>}
+          {lot.status === "LIVE" && <Button onClick={() => redirect(`/live/${lot.id}`)}>Ver Ao Vivo</Button>}
           <Button variant="secondary" onClick={() => redirect(`/laudo/${lot.id}`)}>Ver Laudo</Button>
         </div>
       </div>

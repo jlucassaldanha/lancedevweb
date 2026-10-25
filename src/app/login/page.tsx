@@ -24,18 +24,18 @@ export default function LoginPage() {
 
 
   return (
-    <div className='flex flex-col justify-center items-center h-screen gap-5'>
+    <div className='flex flex-col justify-center items-center h-screen gap-5 px-4'>
       <div className='text-2xl'>
         <LogoLanceDev />
       </div>
 
-      <Card className='flex flex-col items-center justify-center'>
+      <Card className='flex flex-col items-center justify-center w-full md:w-1/3'>
         <CardHeader className='flex justify-center'>
           <CardTitle>Login</CardTitle>
         </CardHeader>
 
-        <form id='login-form' onSubmit={handleSubmit(onSubmit)}>
-          <CardContent className='max-w-100 flex flex-col gap-3'>
+        <form id='login-form' onSubmit={handleSubmit(onSubmit)} className="w-full flex justify-center">
+          <CardContent className='max-w-100 flex flex-col gap-3 w-full'>
             <Controller 
               name='email'
               control={control}
@@ -86,12 +86,12 @@ export default function LoginPage() {
         </CardFooter>
       </Card>
 
-      <Card >
-        <CardHeader className='flex justify-center'>
+      <Card className='flex flex-col items-center justify-center w-full md:w-1/3'>
+        <CardHeader className='flex justify-center w-full'>
           <CardTitle>Acesso rápido de teste</CardTitle>
         </CardHeader>
 
-        <CardContent className='flex gap-2'>
+        <CardContent className='flex flex-col gap-2 w-full'>
           <Button 
             onClick={() => fillWithTestUser('leiloeiro@leilodedev.com')}
           >

@@ -49,7 +49,7 @@ export default function Home() {
                   <Carousel opts={{ align: "start" }} >
                     <CarouselContent>
                       {liveLots.slice(1).map((lot) => (
-                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/4">
+                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3">
                           <CarouselLotCard lot={lot}/>
                         </CarouselItem>
                       ))}
@@ -76,7 +76,7 @@ export default function Home() {
                   <Carousel opts={{ align: "start" }} >
                     <CarouselContent>
                       {scheduledLots.slice(1).map((lot) => (
-                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/4">
+                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3">
                           <CarouselLotCard lot={lot}/>
                         </CarouselItem>
                       ))}
@@ -103,7 +103,7 @@ export default function Home() {
                   <Carousel opts={{ align: "start" }} >
                     <CarouselContent>
                       {finishedLots.slice(1).map((lot) => (
-                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/4">
+                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3">
                           <CarouselLotCard lot={lot}/>
                         </CarouselItem>
                       ))}
