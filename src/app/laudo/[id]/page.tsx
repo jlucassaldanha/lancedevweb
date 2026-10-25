@@ -18,7 +18,7 @@ export default function LaudoPage() {
   )
 
   return (
-    <div className="flex flex-col px-10 mb-5">
+    <div className="flex flex-col px-4 md:px-10 mb-5">
       <div>
         <Link href="/" className="flex gap-2 mb-5">
           <ArrowLeftIcon />
@@ -34,7 +34,7 @@ export default function LaudoPage() {
 
       {(data?.totalBids ?? 0) > 0 && (
         <div className="mt-5 flex flex-col gap-5">
-          <span className="text-2xl">Lances</span>
+          <span className="text-2xl font-extrabold">Lances</span>
           <Separator />
           
           {data?.auditDetails.map((audit, i) => (

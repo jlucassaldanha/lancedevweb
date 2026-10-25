@@ -1,7 +1,8 @@
 import { AuditDetails } from "@/types/audit"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
 import { Button } from "../ui/button"
-import { ChevronDownIcon } from "lucide-react"
+import { AlertCircleIcon, CheckCircle2Icon, ChevronDownIcon } from "lucide-react"
+import { Card, CardContent } from "../ui/card"
 
 interface AuditCardProps {
   comprovante?: boolean
@@ -12,34 +13,55 @@ interface AuditCardProps {
 export function AuditCard({ comprovante, audit, position }: AuditCardProps) {
   return (
     <div className="flex justify-between">
-      <div className="flex flex-col gap-1">
-        {!comprovante && (<span className="text-2xl">#{position} - {audit?.bidderName}</span>)}
+      <div className="flex flex-col gap-1 w-full">
+        <div className="w-full flex justify-between">
+          <div className="flex flex-col gap-2">
+            {!comprovante && (<span className="text-2xl font-bold text-secondary">#{position} • {audit?.bidderName}</span>)}
         
-        <div>
-          Status: 
-          <span className={"flex " + audit?.isValid ? "text-green-400" : 'text-red-400'}>
-            {audit?.isValid ? ' Integro' : ' Fraudado'}
-          </span>
-        </div>
-
-        <Collapsible>
-          <CollapsibleTrigger
-            render={
-            <Button className="w-full">
-              Mostrar detalhes de integridade
-              <ChevronDownIcon className="ml-auto group-data-panel-open/button:rotate-180" />
-            </Button>}
-          />
-          <CollapsibleContent>
-            <div className="flex flex-col">
-              <span>Hash Anterior: {audit?.previousHash}</span>
-              <span>Hash: {audit?.storedHash}</span>
-              <span>Hash Calculada: {audit?.calculatedHash}</span>
+            <div className="w-full flex">
+              <div className={`flex ${audit?.isValid ? "text-green-400" : "text-red-400"} gap-2`}>
+                {audit?.isValid ? <CheckCircle2Icon /> : <AlertCircleIcon />}
+                <div>
+                  {audit?.isValid ? 'Lance integro' : 'Lance fraudado'}
+                </div> 
+              </div>
             </div>
-          </CollapsibleContent>
-        </Collapsible>  
+          </div>
+          {!comprovante && <span className="text-2xl">R$ {Number(audit?.amount).toFixed(2)}</span>}
+        </div>
+        
+
+        <Card className="w-full p-0 mt-2">
+          <Collapsible>
+            <CollapsibleTrigger
+              render={
+              <Button className="w-full">
+                Mostrar detalhes do Laudo
+                <ChevronDownIcon className="ml-auto group-data-panel-open/button:rotate-180" />
+              </Button>}
+            />
+            <CollapsibleContent>
+              
+              <CardContent className="flex flex-col w-full py-5 gap-1">
+                <div className="inline-block wrap-break-word">
+                  <span className="font-bold text-secondary">Hash Anterior:</span> 
+                  <span> {audit?.previousHash}</span>
+                </div>
+                <div className="inline-block wrap-break-word">
+                  <span className="font-bold text-secondary">Hash:</span>
+                  <span> {audit?.storedHash}</span>
+                </div>
+                <div className="inline-block wrap-break-word">
+                  <span className="font-bold text-secondary">Hash Calculada:</span>
+                  <span > {audit?.calculatedHash}</span>
+                </div>
+              </CardContent>
+              
+            </CollapsibleContent>
+          </Collapsible>  
+        </Card>
       </div>
-      <span className="text-2xl">R$ {Number(audit?.amount).toFixed(2)}</span>
+      
     </div>
   )
 }
