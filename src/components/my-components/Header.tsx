@@ -13,10 +13,10 @@ export function Header() {
 
   const auth = useAuth()
 
-  const accountLink = auth.user?.role === "LICITANTE" ? "/arremates": "/dashboard"
+  const accountLink = auth.user?.role === "LICITANTE" ? "/dashboard/licitante": "/dashboard/leiloeiro"
 
   if (pathName === '/login' || pathName === '/register') {
-    return null
+    return null            
   }
 
   const user = auth.user

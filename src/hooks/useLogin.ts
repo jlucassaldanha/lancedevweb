@@ -36,9 +36,9 @@ export default function useLogin() {
       const role = data.user.role
 
       if (role === 'LICITANTE') {
-        router.push('/arremates')
+        router.push('/dashboard/licitante')
       } else if ( role === 'LEILOEIRO') {
-        router.push('/dashboard')
+        router.push('/dashboard/leiloeiro')
       } else {
         router.push('/')
       }

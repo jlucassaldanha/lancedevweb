@@ -2,12 +2,12 @@
 
 import useAuthRedirect from "@/hooks/useAuthRedirect"
 
-export default function DashboardPage() {
-  useAuthRedirect('LEILOEIRO')
+export default function ArrematesPage() {
+  useAuthRedirect('LICITANTE')
 
   return (
     <div className="flex flex-col px-10 mb-5">
-      Dashboard
+      Dashboard licitante
     </div>
   )
 }

@@ -60,7 +60,9 @@ export default function LaudoPage() {
                 <div className="flex flex-col gap-1">
                   <span className="text-2xl">#{i+1} - {audit.bidderName}</span>
                   <div>Status: <span className={"flex " + audit.isValid ? "text-green-400" : 'text-red-400'}>{audit.isValid ? 'Integro' : 'Fraudado'}</span></div>
-                  <span>{audit.calculatedHash}</span>
+                  <span>Hash Anterior: {audit.previousHash}</span>
+                  <span>Hash: {audit.storedHash}</span>
+                  <span>Hash Calculada: {audit.calculatedHash}</span>
                 </div>
                 <span className="text-2xl">R$ {Number(audit.amount).toFixed(2)}</span>
               </div>
