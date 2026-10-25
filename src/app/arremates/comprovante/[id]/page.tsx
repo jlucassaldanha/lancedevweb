@@ -2,6 +2,7 @@
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
+import { Spinner } from "@/components/ui/spinner";
 import useReceipt from "@/hooks/useReceipt";
 import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 import Image from "next/image";
@@ -16,6 +17,12 @@ export default function ComprovantePage() {
   } = useReceipt()
 
   const auditDetails = auditData?.auditDetails.filter((audit) => audit.bidderName === receiptData?.winnerName)[0]
+
+  if (isPending) return (
+    <div className="flex w-full h-screen justify-center items-center p-10">
+      <Spinner className="size-15 text-primary" />
+    </div>
+  )
 
   return (
     <div className="flex flex-col px-10 mb-5">
