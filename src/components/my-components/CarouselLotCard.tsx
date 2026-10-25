@@ -25,8 +25,8 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
       <div className="flex flex-col justify-between h-full">
         <div className="flex gap-10 items-center">
           <div className="flex flex-col gap-2"> 
-            <span>Lance Inicial</span>
-            <span className="text-2xl">R$ {Number(lot.startingBid).toFixed(2)}</span>
+            <span>Maior Lance</span>
+            <span className="text-2xl">R$ {Number(lot.winningBid.amount).toFixed(2)}</span>
           </div>
 
           <div className="flex flex-col gap-2"> 

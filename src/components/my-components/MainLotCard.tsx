@@ -12,6 +12,8 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
     ? 'Ao Vivo' : lot.status === "FINISHED" 
     ? 'Finalizado' : 'Programado'
 
+  
+
   return (
     <div className="w-full flex gap-14">
       <div className="flex flex-col gap-5">
@@ -34,10 +36,18 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
 
 
           <div className="flex gap-10 items-center">
-            <div className="flex flex-col gap-2"> 
-              <span>Lance Inicial</span>
-              <span className="text-2xl">R$ {Number(lot.startingBid).toFixed(2)}</span>
-            </div>
+            {lot._count.bids > 0 ? (
+              <div className="flex flex-col gap-2"> 
+                <span>Maior Lance</span>
+                <span className="text-2xl">R$ {Number(lot.bids[0].amount).toFixed(2)}</span>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-2"> 
+                <span>Lance Inicial</span>
+                <span className="text-2xl">R$ {Number(lot.startingBid).toFixed(2)}</span>
+              </div>
+            )}
+            
 
             <div className="flex flex-col gap-2"> 
               <span>Incremento minimo</span>

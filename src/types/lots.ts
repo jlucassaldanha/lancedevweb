@@ -14,6 +14,7 @@ export interface PublicLot {
   status: LotStatus
   creatorId: string
   winningBid: Bid
+  bids: Bid[]
   _count: {
     bids:	number
   }	
