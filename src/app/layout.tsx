@@ -45,7 +45,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       className={cn("h-full", "antialiased", fontSans.variable, fontSans.variable, "font-sans", inter.variable, fontSerif.variable)}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col lg:px-20">
+      <body className="min-h-full flex flex-col lg:px-30">
         <AppProvider user={user} token={token}>
           <Header />
           {children}

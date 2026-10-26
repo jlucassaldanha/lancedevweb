@@ -6,8 +6,13 @@ import { Separator } from "../ui/separator";
 import { buttonVariants } from "../ui/button";
 import { CountdownTimer } from './CountdownTimer';
 import Link from 'next/link';
+import { Bubble, BubbleContent } from "../ui/bubble";
 
 export function CarouselLotCard({ lot }: { lot: PublicLot }) {
+  const status = lot.status === "LIVE" 
+    ? 'Ao Vivo' : lot.status === "FINISHED" 
+    ? 'Finalizado' : 'Programado'
+
   return (
     <div className="w-full flex flex-col justify-between h-full gap-4 p-4">
       <div className='flex flex-col gap-3'>
@@ -21,13 +26,28 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
         </div>
         
         <span className="text-2xl font-serif line-clamp-2 min-h-14 flex items-center">{lot.title}</span>
+        <Separator />
       </div>
       
       <div className="flex flex-col gap-4">
-        <Separator />
-      
         <div className="flex flex-col justify-between h-full gap-2">
           {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}
+          
+          <div className="flex gap-10 items-center">
+            <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : "secondary"}>
+              <BubbleContent >
+                {status}
+              </BubbleContent>
+            </Bubble>
+
+            {(lot.bids.length > 0 && lot.status === 'FINISHED') && (
+              <Bubble>
+                <BubbleContent >
+                  Arrematado
+                </BubbleContent>
+              </Bubble>
+            )}
+          </div>
 
           <div className="flex gap-10 items-center">
             {lot.bids.length > 0 ? (

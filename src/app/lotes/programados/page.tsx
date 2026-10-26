@@ -2,7 +2,6 @@
 
 import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
-import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
 import useListLots from '@/hooks/useListLots'
 import { ArrowLeftIcon } from 'lucide-react'
@@ -33,8 +32,6 @@ export default function LotesProgramadosPage() {
       <div className='text-4xl text-secondary font-bold w-full'>
         Lotes Programados
       </div>
-
-      <Separator className="my-5"/>
 
       {error?.message && (
         <div className='w-full m-5'>

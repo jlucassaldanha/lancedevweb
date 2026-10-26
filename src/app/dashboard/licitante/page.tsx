@@ -3,7 +3,7 @@
 import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
 import { CarouselWinningCard } from '@/components/my-components/CarouselWinningCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
@@ -13,9 +13,8 @@ import useMyWinnings from '@/hooks/useMyWinnings'
 import useWalletValues from '@/hooks/useWalletValues'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
 
-export default function ArrematesPage() {
+export default function DashboardPage() {
   useAuthRedirect('LICITANTE')
 
   const {
@@ -50,8 +49,6 @@ export default function ArrematesPage() {
         Dashboard do Licitante
       </div>
 
-      <Separator className="mt-5" />
-
       {walletError?.message && (
         <div className='w-full m-5'>
           <ErrorCard message={walletError.message} title="Busca de Lotes"/>
@@ -61,7 +58,7 @@ export default function ArrematesPage() {
       <div className='w-full flex flex-col md:flex-row gap-5 justify-between md:items-end mt-10'>
         <div className='flex flex-col font-bold'>
           <span>Saldo Livre atual</span>
-          <span className='font-serif text-primary'>R$ {Number(walletValues?.availableBalance).toFixed(2)}</span>
+          <span className='font-serif text-primary text-2xl'>R$ {Number(walletValues?.availableBalance).toFixed(2)}</span>
         </div>
         <Link href={'/carteira'} className={buttonVariants()}>Ir para a carteira</Link>
       </div>
@@ -88,7 +85,7 @@ export default function ArrematesPage() {
           <Carousel opts={{ align: "start" }} >
             <CarouselContent>
               {winnings.map((winning) => (
-                <CarouselItem key={winning.lotId} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={winning.lotId} className="md:basis-1/2 lg:basis-1/3 flex">
                   <CarouselWinningCard winning={winning}/>
                 </CarouselItem>
               ))}
@@ -121,7 +118,7 @@ export default function ArrematesPage() {
           <Carousel opts={{ align: "start" }} >
             <CarouselContent>
               {lots.map((lot) => (
-                <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
                   <CarouselLotCard lot={lot}/>
                 </CarouselItem>
               ))}

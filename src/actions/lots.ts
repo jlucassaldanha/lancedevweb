@@ -56,3 +56,12 @@ export async function listMyLiveLotsAction() {
     throw error
   }
 }
+
+export async function listMyPublishedLotsAction() {
+  try {
+    return await apiFetch<PublicLot[]>('/lots/my-lots')
+  } catch (error) {
+    console.error('Erro ao obter lista de lotes publicados do usuário:', error)
+    throw error
+  }
+}
