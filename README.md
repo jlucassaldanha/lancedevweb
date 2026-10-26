@@ -30,6 +30,8 @@ A aplicação já contempla as seguintes funcionalidades operacionais:
 *   **Integridade / Auditoria:** Página pública para conferência de integridade e histórico de lances de um lote.
 *   **Carteira do Usuário:** Consulta de saldo e funcionalidade de depósito simulado.
 *   **Meus arremates:** Tela com listagem dos arremates do usuário logado.
+*   **Meus Lotes:** Tela com listagem dos lotes publicados pelo usuário logado.
+*   **Dashboard:** Dashboard de usuário para licitante e leiloeiro mostrando informações principais.
 
 #### Comportamentos Inesperados e Limitações Conhecidas
 
