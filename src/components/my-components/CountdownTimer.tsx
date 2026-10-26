@@ -12,11 +12,16 @@ export function CountdownTimer({ endTime }: { endTime: string }) {
         return;
       }
 
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((difference / 1000 / 60) % 60);
       const seconds = Math.floor((difference / 1000) % 60);
 
-      const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes
+      // Formatação condicional para exibir dias apenas se houver
+      let formattedTime = "";
+      if (days > 0) formattedTime += `${days} dia(s), `;
+      
+      formattedTime += `${hours.toString().padStart(2, '0')}:${minutes
         .toString()
         .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
@@ -34,11 +39,16 @@ export function CountdownTimer({ endTime }: { endTime: string }) {
   }, [endTime]); 
 
   return (
-    <span 
-      ref={timeRef} 
-      className="font-serif text-2xl font-bold text-secondary"
-    >
-      --:--:--
-    </span>
+    <div>
+      <div className="flex flex-col gap-2 font-bold">
+        <span>Contagem regressiva para o encerramento do Lote</span>
+        <span 
+          ref={timeRef} 
+          className="font-serif text-2xl font-bold text-secondary"
+        >
+          --:--:--
+        </span>
+      </div>
+    </div>
   );
 }

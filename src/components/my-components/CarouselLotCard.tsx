@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import { redirect } from "next/navigation";
-import { CountDownCard } from "./CountDownCard";
+import { CountdownTimer } from './CountdownTimer';
 
 export function CarouselLotCard({ lot }: { lot: PublicLot }) {
   return (
@@ -24,7 +24,7 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
       <Separator />
       
       <div className="flex flex-col justify-between h-full gap-2">
-        {lot.status === 'LIVE' && <CountDownCard endTime={lot.endTime}/>}
+        {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}
 
         <div className="flex gap-10 items-center">
           {lot._count.bids > 0 ? (
