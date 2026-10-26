@@ -16,6 +16,7 @@ lotes sem lances encontran-se como integros
 consciencia de que foram usadas muitas strings vazias por conta do tempo
 lotes ao vivo encontra-se como encerrado quando sem lances no laudo
 um lote não iniciado ainda pode ser acessado no ao vivo
+consciencia de uso não muito semantico do html
 
 coisas feitas:
 mudança de temas aplicadas
@@ -26,11 +27,13 @@ comprovante
 carteira
 
 proximo passo:
+cliente:
 arremates
+
+publica:
 lotes finalizados, programados e ao vivo
 
+leiloeiro:
 criação de lotes
 meus lotes
 
-
-CONTAR DIA SEMANA MES ANO
