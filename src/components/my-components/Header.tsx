@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { LogoLanceDev } from "./LogoLanceDev";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { redirect, usePathname } from "next/navigation";
 import { ThemeButton } from "./ThemeButton";
 import { useAuth } from "@/contexts/authContext";
@@ -42,13 +42,13 @@ export function Header() {
           </div>
         ) : (
           <div className="flex gap-2"> 
-            <Button onClick={() => redirect('/login')}>
+            <Link href={'/login'} className={buttonVariants()}>
               Entrar
-            </Button>
+            </Link>
 
-            <Button onClick={() => redirect('/register')} variant="secondary">
+            <Link href={'/register'} className={buttonVariants({ variant: 'secondary' })}>
               Criar Conta
-            </Button>
+            </Link>
           </div>
         )}
 

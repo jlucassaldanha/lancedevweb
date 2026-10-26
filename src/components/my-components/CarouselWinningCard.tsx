@@ -1,11 +1,10 @@
 "use client"
 
-import { MyWinning, PublicLot } from "@/types/lots";
+import { MyWinning } from "@/types/lots";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
-import { redirect } from "next/navigation";
-import { CountdownTimer } from './CountdownTimer';
+import { buttonVariants } from "../ui/button";
+import Link from 'next/link';
 
 export function CarouselWinningCard({ winning }: { winning: MyWinning }) {
   return (
@@ -24,7 +23,7 @@ export function CarouselWinningCard({ winning }: { winning: MyWinning }) {
       <Separator />
 
       <div className="flex gap-5 mt-5">
-        <Button onClick={() => redirect(`/arremates/comprovante/${winning.lotId}`)}>Ver Comprovante do Lote</Button>
+        <Link href={`/arremates/comprovante/${winning.lotId}`} className={buttonVariants()}>Ver Comprovante do Lote</Link>
       </div>
     </div>
   )

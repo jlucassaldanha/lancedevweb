@@ -3,11 +3,12 @@
 import { LiveLot } from "@/types/lots";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { redirect } from "next/navigation";
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 import { CountdownTimer } from "./CountdownTimer";
+import Link from 'next/link';
 
 export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
 
@@ -73,8 +74,12 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
         </div>
 
         <div className="flex gap-5 mt-10">
-  
-          <Button variant="secondary" onClick={() => redirect(`/laudo/${liveLot?.lot.id}`)}>Ver Laudo</Button>
+          <Link 
+            href={`/integridade/${liveLot?.lot.id}`} 
+            className={buttonVariants({ variant: 'secondary' })}
+          >
+            Ver Integridade
+          </Link>
         </div>
       </div>
     </div>

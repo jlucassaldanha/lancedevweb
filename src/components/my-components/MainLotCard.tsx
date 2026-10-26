@@ -4,9 +4,10 @@ import { PublicLot } from "@/types/lots";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { redirect } from "next/navigation";
 import { CountdownTimer } from './CountdownTimer';
+import Link from 'next/link';
 
 export function MainLotCard({ lot }: { lot: PublicLot }) {
   const status = lot.status === "LIVE" 
@@ -57,8 +58,12 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
         </div>
 
         <div className="flex gap-5 mt-10">
-          {lot.status === "LIVE" && <Button onClick={() => redirect(`/live/${lot.id}`)}>Ver Ao Vivo</Button>}
-          {lot.status !== 'SCHEDULED' && <Button variant="secondary" onClick={() => redirect(`/laudo/${lot.id}`)}>Ver Laudo</Button>}
+          {lot.status === "LIVE" && (
+            <Link href={`/live/${lot.id}`} className={buttonVariants()}>Ver Ao Vivo</Link>
+          )}
+          {lot.status !== 'SCHEDULED' && (
+            <Link href={`/integridade/${lot.id}`} className={buttonVariants({ variant: 'secondary' })}>Ver Laudo</Link>
+          )}
         </div>
       </div>
     </div>
