@@ -33,16 +33,26 @@ export function LeiloeiroLotCard({ lot }: { lot: PublicLot }) {
         <div className="flex flex-col justify-between h-full gap-2">
           {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}
           
-          <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : lot.status === 'CANCELLED' ? "destructive" : "secondary"}>
-            <BubbleContent >
-              {status}
-            </BubbleContent>
-          </Bubble>
+          <div className="flex gap-10 items-center">
+            <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : lot.status === 'CANCELLED' ? "destructive" : "secondary"}>
+              <BubbleContent >
+                {status}
+              </BubbleContent>
+            </Bubble>
+
+            {(lot.bids.length > 0 && lot.status === 'FINISHED') && (
+              <Bubble>
+                <BubbleContent >
+                  Arrematado
+                </BubbleContent>
+              </Bubble>
+            )}
+          </div>
 
           <div className="flex gap-10 items-center">
             {lot.bids.length > 0 ? (
                 <div className="flex flex-col gap-2"> 
-                  <span>Maior Lance</span>
+                  <span>{lot.status === 'FINISHED' ? "Lance Vencedor" : "Maior Lance"}</span>
                   <span className="text-xl font-serif">R$ {Number(lot.bids[0].amount).toFixed(2)}</span>
                 </div>
               ) : (
@@ -71,7 +81,7 @@ export function LeiloeiroLotCard({ lot }: { lot: PublicLot }) {
           {(lot.bids.length <= 0 && (lot.status === 'LIVE' || lot.status === 'SCHEDULED')) && (
             <Link 
               href={`/cancel`}
-              className={buttonVariants()}
+              className={buttonVariants({ variant: 'destructive' })}
             >
               Cancelar Lote
             </Link>

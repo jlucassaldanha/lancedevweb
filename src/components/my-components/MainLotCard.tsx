@@ -31,11 +31,21 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
         <span className="text-4xl font-serif">{lot.title}</span>
         <Separator />
         <div className="flex flex-col justify-between h-full gap-3">
-          <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : "secondary"}>
-            <BubbleContent >
-              {status}
-            </BubbleContent>
-          </Bubble>
+          <div className="flex gap-10 items-center">
+            <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : "secondary"}>
+              <BubbleContent >
+                {status}
+              </BubbleContent>
+            </Bubble>
+
+            {(lot.bids.length > 0 && lot.status === 'FINISHED') && (
+              <Bubble>
+                <BubbleContent >
+                  Arrematado
+                </BubbleContent>
+              </Bubble>
+            )}
+          </div>
 
           {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}
 

@@ -33,11 +33,21 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
         <div className="flex flex-col justify-between h-full gap-2">
           {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}
           
-          <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : "secondary"}>
-            <BubbleContent >
-              {status}
-            </BubbleContent>
-          </Bubble>
+          <div className="flex gap-10 items-center">
+            <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : "secondary"}>
+              <BubbleContent >
+                {status}
+              </BubbleContent>
+            </Bubble>
+
+            {(lot.bids.length > 0 && lot.status === 'FINISHED') && (
+              <Bubble>
+                <BubbleContent >
+                  Arrematado
+                </BubbleContent>
+              </Bubble>
+            )}
+          </div>
 
           <div className="flex gap-10 items-center">
             {lot.bids.length > 0 ? (
