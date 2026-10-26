@@ -28,7 +28,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
       </div>
 
       <div className="flex flex-col gap-5 md:w-2/4">
-        <span className="text-5xl font-serif">{lot.title}</span>
+        <span className="text-4xl font-serif">{lot.title}</span>
         <Separator />
         <div className="flex flex-col justify-between h-full gap-3">
           <Badge variant="secondary" className="mt-5">{status}</Badge>

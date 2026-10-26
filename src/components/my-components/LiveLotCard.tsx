@@ -30,7 +30,7 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
       </div>
 
       <div className="flex flex-col gap-5 md:w-2/4">
-        <span className="text-5xl font-serif">{liveLot?.lot.title}</span>
+        <span className="text-4xl font-serif">{liveLot?.lot.title}</span>
         <Separator />
 
         <div className="flex flex-col justify-between h-full gap-3">
