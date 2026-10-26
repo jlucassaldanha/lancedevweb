@@ -25,7 +25,7 @@ export default function ComprovantePage() {
 
   return (
     <div className="flex flex-col px-10 mb-5">
-      <div className='text-4xl text-primary font-bold w-full'>
+      <div className='text-4xl text-secondary font-bold w-full'>
         Comprovante de Arremate
       </div>
 
