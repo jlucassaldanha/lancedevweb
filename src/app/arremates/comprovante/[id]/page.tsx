@@ -30,8 +30,6 @@ export default function ComprovantePage() {
         Comprovante de Arremate
       </div>
 
-      <Separator className="my-5"/>
-
       {auditError?.message && (
         <div className='w-full mb-5'>
           <ErrorCard message={auditError.message} title="Busca de Lotes"/>

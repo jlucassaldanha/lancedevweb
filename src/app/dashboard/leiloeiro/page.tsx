@@ -1,7 +1,6 @@
 "use client"
 
 import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
-import { CarouselWinningCard } from '@/components/my-components/CarouselWinningCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
 import { buttonVariants } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
@@ -42,8 +41,6 @@ export default function DashboardPage() {
         Dashboard do Leiloeiro
       </div>
 
-      <Separator className="mt-5" />
-
       {walletError?.message && (
         <div className='w-full m-5'>
           <ErrorCard message={walletError.message} title="Busca de Lotes"/>
@@ -61,7 +58,7 @@ export default function DashboardPage() {
       <Separator className="my-5" />
 
       <div className='w-full flex flex-col gap-3'>
-        <span className='text-2xl font-bold text-secondary'>Lotes Arrematados</span>
+        <span className='text-2xl font-bold text-secondary'>Meus Lotes</span>
 
         {publishedLotsError?.message && (
           <div className='w-full m-5'>
@@ -71,7 +68,7 @@ export default function DashboardPage() {
 
         <div className='w-full flex justify-end'>
           <Link href="/lotes/meus" className="flex gap-2 mb-5">
-            Ver mais Arremates
+            Ver mais Lotes
             <ArrowRightIcon />
           </Link>
         </div>
@@ -80,7 +77,7 @@ export default function DashboardPage() {
           <Carousel opts={{ align: "start" }} >
             <CarouselContent>
               {lots.map((lot) => (
-                <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
                   <CarouselLotCard lot={lot}/>
                 </CarouselItem>
               ))}

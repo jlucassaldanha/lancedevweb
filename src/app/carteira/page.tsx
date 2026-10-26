@@ -38,8 +38,6 @@ export default function CarteiraPage() {
       <div className='text-4xl text-secondary font-bold w-full'>
         Carteira do Licitante
       </div>
-
-      <Separator className="mt-5" />
       
       {walletError?.message && (
         <div className='w-full mb-5'>

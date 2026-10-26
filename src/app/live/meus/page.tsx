@@ -1,9 +1,7 @@
 "use client"
 
 import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
-import { CarouselWinningCard } from '@/components/my-components/CarouselWinningCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
-import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
 import useAuthRedirect from '@/hooks/useAuthRedirect'
 import useMyLiveLots from '@/hooks/useMyLiveLots'
@@ -38,9 +36,6 @@ export default function MeuLivePage() {
         Meus Lotes ao Vivo
       </div>
 
-      <Separator className="my-5"/>
-
-      
       {liveLotsError?.message && (
         <div className='w-full m-5'>
           <ErrorCard message={liveLotsError.message} title="Busca de Lotes"/>

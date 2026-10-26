@@ -4,20 +4,13 @@ import { BidCard } from "@/components/my-components/BidCard";
 import { ErrorCard } from '@/components/my-components/ErrorCard';
 import { LiveLotCard } from "@/components/my-components/LiveLotCard";
 import { MakeBidForm } from '@/components/my-components/MakeBidForm';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Button } from "@/components/ui/button";
-import { Field, FieldError } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
 import useAuthRedirect from "@/hooks/useAuthRedirect";
 import useLiveLot from "@/hooks/useLiveLot";
-import useMakeBid from "@/hooks/useMakeBid";
 import useWalletValues from "@/hooks/useWalletValues";
-import { AlertCircleIcon, ArrowLeftIcon } from "lucide-react";
+import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
-import { Controller } from "react-hook-form";
 
 export default function LivePage() {
   useAuthRedirect('LICITANTE')

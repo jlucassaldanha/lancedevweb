@@ -2,7 +2,6 @@
 
 import { CarouselWinningCard } from '@/components/my-components/CarouselWinningCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
-import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
 import useAuthRedirect from '@/hooks/useAuthRedirect'
 import useMyWinnings from '@/hooks/useMyWinnings'
@@ -36,8 +35,6 @@ export default function ArrematesPage() {
       <div className='text-4xl text-secondary font-bold w-full'>
         Meus Arremates
       </div>
-
-      <Separator className="my-5"/>
 
       {error?.message && (
         <div className='w-full mb-5'>

@@ -2,11 +2,11 @@
 
 import { PublicLot } from "@/types/lots";
 import Image from "next/image";
-import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
 import { buttonVariants } from "../ui/button";
 import { CountdownTimer } from './CountdownTimer';
 import Link from 'next/link';
+import { Bubble, BubbleContent } from "../ui/bubble";
 
 export function MainLotCard({ lot }: { lot: PublicLot }) {
   const status = lot.status === "LIVE" 
@@ -31,7 +31,11 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
         <span className="text-4xl font-serif">{lot.title}</span>
         <Separator />
         <div className="flex flex-col justify-between h-full gap-3">
-          <Badge variant="secondary" className="mt-5">{status}</Badge>
+          <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : "secondary"}>
+            <BubbleContent >
+              {status}
+            </BubbleContent>
+          </Bubble>
 
           {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}
 
