@@ -62,3 +62,18 @@ export interface LiveLot {
   },
   bidsHistory: BidsHistory[]
 }
+
+export interface MyWinning {
+  lotId: string
+  title: string
+  imageUrl: string
+  amount: string
+  closedAt: string
+  receipt: {
+    lotId: string
+    title: string
+    amount: string
+    closedAt: string
+    winnerId: string
+  }
+}

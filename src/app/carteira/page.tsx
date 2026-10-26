@@ -40,7 +40,7 @@ export default function CarteiraPage() {
 
       <Separator className="mt-5" />
 
-      <div className='w-full flex gap-5 mt-10'>
+      <div className='w-full flex flex-col md:flex-row gap-5 mt-10'>
         <div className='flex flex-col font-bold'>
           <span>Saldo Total atual</span>
           <span className='font-serif text-primary'>R$ {Number(walletValues?.totalBalance).toFixed(2)}</span>
@@ -60,7 +60,7 @@ export default function CarteiraPage() {
       <Separator className="my-5"/>
 
       <div className='w-full'>
-        <span className="text-2xl font-extrabold">Fazer um deposito (simulado)</span>
+        <span className="text-2xl font-extrabold text-secondary">Fazer um deposito (simulado)</span>
 
         <MakeDepositForm />
       </div>

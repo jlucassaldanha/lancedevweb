@@ -7,6 +7,8 @@ import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useListLots from "@/hooks/useListLots";
+import { ArrowRightIcon } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   const { 
@@ -46,6 +48,14 @@ export default function Home() {
               {liveLots.length > 1 && (
                 <div>
                   <Separator className="my-10"/>
+
+                  <div className='w-full flex justify-end'>
+                    <Link href="/lotes/live" className="flex gap-2 mb-5">
+                      Ver mais Lotes
+                      <ArrowRightIcon />
+                    </Link>
+                  </div>
+
                   <Carousel opts={{ align: "start" }} >
                     <CarouselContent>
                       {liveLots.slice(1).map((lot) => (
@@ -73,6 +83,14 @@ export default function Home() {
               {scheduledLots.length > 1 && (
                 <div>
                   <Separator className="my-10"/>
+
+                  <div className='w-full flex justify-end'>
+                    <Link href="/lotes/programados" className="flex gap-2 mb-5">
+                      Ver mais Lotes
+                      <ArrowRightIcon />
+                    </Link>
+                  </div>
+
                   <Carousel opts={{ align: "start" }} >
                     <CarouselContent>
                       {scheduledLots.slice(1).map((lot) => (
@@ -100,6 +118,14 @@ export default function Home() {
               {finishedLots.length > 1 && (
                 <div>
                   <Separator className="my-10"/>
+
+                  <div className='w-full flex justify-end'>
+                    <Link href="/lotes/finalizados" className="flex gap-2 mb-5">
+                      Ver mais Lotes
+                      <ArrowRightIcon />
+                    </Link>
+                  </div>
+                  
                   <Carousel opts={{ align: "start" }} >
                     <CarouselContent>
                       {finishedLots.slice(1).map((lot) => (
