@@ -1,5 +1,6 @@
 "use client"
 
+import { ErrorCard } from '@/components/my-components/ErrorCard'
 import { MakeDepositForm } from '@/components/my-components/MakeDepositForm'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
@@ -39,6 +40,12 @@ export default function CarteiraPage() {
       </div>
 
       <Separator className="mt-5" />
+      
+      {walletError?.message && (
+        <div className='w-full mb-5'>
+          <ErrorCard message={walletError.message} title="Busca de Lotes"/>
+        </div>
+      )}
 
       <div className='w-full flex flex-col md:flex-row gap-5 mt-10'>
         <div className='flex flex-col font-bold'>

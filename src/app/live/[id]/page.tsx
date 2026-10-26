@@ -1,6 +1,7 @@
 "use client"
 
 import { BidCard } from "@/components/my-components/BidCard";
+import { ErrorCard } from '@/components/my-components/ErrorCard';
 import { LiveLotCard } from "@/components/my-components/LiveLotCard";
 import { MakeBidForm } from '@/components/my-components/MakeBidForm';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -21,7 +22,11 @@ import { Controller } from "react-hook-form";
 export default function LivePage() {
   useAuthRedirect('LICITANTE')
   
-  const { liveData, isLivePending, liveError } = useLiveLot()
+  const { 
+    liveData, 
+    isLivePending, 
+    liveError 
+  } = useLiveLot()
 
   const {
     walletValues,
@@ -45,6 +50,19 @@ export default function LivePage() {
           Voltar aos Lotes
         </Link>
       </div>
+
+      
+      {liveError?.message && (
+        <div className='w-full m-5'>
+          <ErrorCard message={liveError.message} title="Busca de Lotes"/>
+        </div>
+      )}
+
+      {walletError?.message && (
+        <div className='w-full m-5'>
+          <ErrorCard message={walletError.message} title="Busca de Lotes"/>
+        </div>
+      )}
 
       <LiveLotCard 
         liveLot={liveData}

@@ -1,6 +1,7 @@
 "use client"
 
 import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
+import { ErrorCard } from '@/components/my-components/ErrorCard'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
 import useListLots from '@/hooks/useListLots'
@@ -34,6 +35,12 @@ export default function LotesLivePage() {
       </div>
 
       <Separator className="my-5"/>
+
+      {error?.message && (
+        <div className='w-full m-5'>
+          <ErrorCard message={error.message} title="Busca de Lotes"/>
+        </div>
+      )}
 
       <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
         {liveLots.map((lot) => (

@@ -3,8 +3,7 @@
 import { LiveLot } from "@/types/lots";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
-import { Button, buttonVariants } from "../ui/button";
-import { redirect } from "next/navigation";
+import { buttonVariants } from "../ui/button";
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 import { CountdownTimer } from "./CountdownTimer";
@@ -13,7 +12,6 @@ import Link from 'next/link';
 export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
 
   const userAlreadyBid = liveLot?.bidsHistory.some((bid) => bid.isUserBid === true)
-  const isLive = liveLot?.lot.status
 
   return (
     <div className="w-full flex flex-col md:flex-row gap-14">
