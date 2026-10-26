@@ -15,8 +15,7 @@ problemas conhecidos:
 lotes sem lances encontran-se como integros
 consciencia de que foram usadas muitas strings vazias por conta do tempo
 lotes ao vivo encontra-se como encerrado quando sem lances no laudo
-
-fazer um lance recarrega a pagina toda
+um lote não iniciado ainda pode ser acessado no ao vivo
 
 coisas feitas:
 mudança de temas aplicadas
@@ -24,3 +23,6 @@ login/registro
 vitrine
 laudo
 comprovante
+
+
+CONTAR DIA SEMANA MES ANO

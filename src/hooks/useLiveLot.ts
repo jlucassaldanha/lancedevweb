@@ -1,5 +1,5 @@
-import { getLiveRoomStatusByIdAction } from "@/actions/lots";
-import { LiveLot } from "@/types/lots";
+import { getLiveRoomStatusByIdAction, getPublicLotByIdActions } from "@/actions/lots";
+import { LiveLot, PublicLot } from "@/types/lots";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 
@@ -15,6 +15,6 @@ export default function useLiveLot() {
   return {
     liveData,
     isLivePending,
-    liveError
+    liveError,
   }
 }

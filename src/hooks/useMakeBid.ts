@@ -9,11 +9,7 @@ const formSchema = z.object({
   amount: z.number().min(1, 'Você deve escolher um valor maior que zero para o lance'),
 })
 
-type BidFormData = z.infer<typeof formSchema>
-
-type BidData = {
-  amount: number
-}
+export type BidFormData = z.infer<typeof formSchema>
 
 export default function useMakeBid() {
   const { id } = useParams() as { id: string };
@@ -21,7 +17,7 @@ export default function useMakeBid() {
   const queryClient = useQueryClient()
 
   const { mutate, isPending, error } = useMutation({
-    mutationFn: (data: BidData) => makeBidAction(id, data.amount),
+    mutationFn: (data: BidFormData) => makeBidAction(id, data.amount),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['make-bid'] })
     }
