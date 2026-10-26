@@ -47,3 +47,12 @@ export async function listMyWinningsAction() {
     throw error
   }
 }
+
+export async function listMyLiveLotsAction() {
+  try {
+    return await apiFetch<PublicLot[]>('/lots/my-live-lots')
+  } catch (error) {
+    console.error('Erro ao obter lista de lotes ao vivo do usuário:', error)
+    throw error
+  }
+}

@@ -17,10 +17,11 @@ A aplicação já contempla as seguintes funcionalidades operacionais:
 
 *   **Sistema de Temas (Dark/Light Mode):** Implementação completa da alternância de temas, utilizando as variáveis CSS baseadas em `oklch` para garantir a identidade visual (fundo Azul Marinho no escuro e base limpa no claro).
 *   **Autenticação:** Telas de Login e Registro perfeitamente funcionais e integradas.
-*   **Vitrine de Lotes:** A tela inicial (pública) exibindo a listagem dos itens leiloados.
+*   **Vitrine de Lotes:** A tela inicial (pública) exibindo a listagem dos itens leiloados além das telas de listagem completa.
 *   **Comprovante de Arremate:** Tela para visualização e compartilhamento do recibo de itens arrematados.
 *   **Integridade / Auditoria:** Página pública para conferência de integridade e histórico de lances de um lote.
 *   **Carteira do Usuário:** Consulta de saldo e funcionalidade de depósito simulado.
+*   **Meus arremates:** Tela com listagem dos arremates do usuário logado.
 
 #### Comportamentos Inesperados e Limitações Conhecidas
 
