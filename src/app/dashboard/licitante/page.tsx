@@ -13,7 +13,6 @@ import useMyWinnings from '@/hooks/useMyWinnings'
 import useWalletValues from '@/hooks/useWalletValues'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
 
 export default function ArrematesPage() {
   useAuthRedirect('LICITANTE')
