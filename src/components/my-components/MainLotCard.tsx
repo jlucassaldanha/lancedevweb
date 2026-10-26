@@ -4,9 +4,10 @@ import { PublicLot } from "@/types/lots";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { redirect } from "next/navigation";
-import { CountDownCard } from "./CountDownCard";
+import { CountdownTimer } from './CountdownTimer';
+import Link from 'next/link';
 
 export function MainLotCard({ lot }: { lot: PublicLot }) {
   const status = lot.status === "LIVE" 
@@ -33,7 +34,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
         <div className="flex flex-col justify-between h-full gap-3">
           <Badge variant="secondary" className="mt-5">{status}</Badge>
 
-          {lot.status === 'LIVE' && <CountDownCard endTime={lot.endTime}/>}
+          {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}
 
           <div className="flex gap-10 items-center">
             {lot._count.bids > 0 ? (
@@ -57,8 +58,12 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
         </div>
 
         <div className="flex gap-5 mt-10">
-          {lot.status === "LIVE" && <Button onClick={() => redirect(`/live/${lot.id}`)}>Ver Ao Vivo</Button>}
-          <Button variant="secondary" onClick={() => redirect(`/laudo/${lot.id}`)}>Ver Laudo</Button>
+          {lot.status === "LIVE" && (
+            <Link href={`/live/${lot.id}`} className={buttonVariants()}>Ver Ao Vivo</Link>
+          )}
+          {lot.status !== 'SCHEDULED' && (
+            <Link href={`/integridade/${lot.id}`} className={buttonVariants({ variant: 'secondary' })}>Integridade</Link>
+          )}
         </div>
       </div>
     </div>

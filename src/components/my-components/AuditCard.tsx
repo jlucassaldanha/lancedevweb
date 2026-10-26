@@ -36,7 +36,7 @@ export function AuditCard({ comprovante, audit, position }: AuditCardProps) {
             <CollapsibleTrigger
               render={
               <Button className="w-full">
-                Mostrar detalhes do Laudo
+                Mostrar detalhes de Integridade
                 <ChevronDownIcon className="ml-auto group-data-panel-open/button:rotate-180" />
               </Button>}
             />

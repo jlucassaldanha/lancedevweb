@@ -4,7 +4,7 @@ Este é o repositório do front-end para o desafio da Casa de Leilões online. A
 
 #### Decisões Técnicas e Arquitetura
 
-Para garantir uma interface escalável, manutenível e entregue dentro do prazo, as seguintes decisões fundamentais foram tomadas:
+Para garantir uma interface escalável, manutenível e entregue dentro do prazo, as seguintes decisões foram tomadas:
 
 *   **Shadcn UI:** Escolhido como base de componentes pela sua alta capacidade de personalização. Diferente de bibliotecas de componentes tradicionais, o Shadcn permite acesso direto ao código fonte do componente, facilitando a adaptação exata à paleta de cores exigida no desafio (Azul Escuro, Verde Limão, Ciano, etc.).
 *   **TanStack Query, React Hook Form e Zod:** A trindade escolhida para gerenciamento de estado assíncrono e formulários. O TanStack Query facilita o consumo da API e o *caching*, enquanto o React Hook Form aliado ao Zod garante validações de formulário (como login e registro) performáticas e seguras no lado do cliente.
@@ -19,14 +19,16 @@ A aplicação já contempla as seguintes funcionalidades operacionais:
 *   **Autenticação:** Telas de Login e Registro perfeitamente funcionais e integradas.
 *   **Vitrine de Lotes:** A tela inicial (pública) exibindo a listagem dos itens leiloados.
 *   **Comprovante de Arremate:** Tela para visualização e compartilhamento do recibo de itens arrematados.
-*   **Laudo / Auditoria:** Página pública para verificação da integridade e histórico de lances de um lote específico.
+*   **Integridade / Auditoria:** Página pública para conferência de integridade e histórico de lances de um lote.
+*   **Carteira do Usuário:** Consulta de saldo e funcionalidade de depósito simulado.
 
 #### Comportamentos Inesperados e Limitações Conhecidas
 
 Devido ao tempo restrito para a entrega do desafio, os seguintes pontos são de conhecimento técnico e assumidos como *trade-offs* da versão atual:
 
-*   **Lotes sem lances constando como "Íntegros":** Na página de auditoria/laudo, lotes recém-criados que ainda não receberam nenhum lance estão sendo exibidos com a flag de integridade ativa, mesmo não possuindo histórico na cadeia de *hashes* para validar.
+*   **Lotes sem lances constando como "Íntegros":** Na página de integridade, lotes recém-criados que ainda não receberam nenhum lance estão sendo exibidos com a flag de integridade ativa, mesmo não possuindo histórico na cadeia de *hashes* para validar.
 *   **Uso excessivo de Strings Vazias:** Pelo tempo reduzido, algumas tipagens e inicializações de estado precisaram utilizar *strings* vazias (`""`) ao invés de tratamentos mais robustos de `null` ou `undefined`, o que pode gerar uma necessidade de refatoração futura em cenários mais estritos.
+*  **Semântica HTML Reduzida:** Estruturação visual focada em agilidade, apresentando uso de tags HTML menos semânticas em determinados componentes visuais.
 
 #### Como rodar a aplicação localmente
 

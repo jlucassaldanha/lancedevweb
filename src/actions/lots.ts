@@ -1,7 +1,7 @@
 "use server"
 
 import { apiFetch } from "@/lib/api"
-import { LiveLot, LotReceipt, PublicLot } from "@/types/lots"
+import { LiveLot, LotReceipt, MyWinning, PublicLot } from "@/types/lots"
 
 export async function listPublicLotsActions() {
   try {
@@ -35,6 +35,15 @@ export async function getLiveRoomStatusByIdAction(id: string) {
     return await apiFetch<LiveLot>(`/lots/${id}/live-room`)
   } catch (error) {
     console.error('Erro ao obter dados da sessão ao vivo:', error)
+    throw error
+  }
+}
+
+export async function listMyWinningsAction() {
+  try {
+    return await apiFetch<MyWinning[]>('/lots/my-winnings')
+  } catch (error) {
+    console.error('Erro ao obter lista de arremates:', error)
     throw error
   }
 }

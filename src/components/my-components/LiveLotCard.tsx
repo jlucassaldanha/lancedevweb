@@ -3,17 +3,17 @@
 import { LiveLot } from "@/types/lots";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { redirect } from "next/navigation";
-import { Alert, AlertTitle } from "../ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 import { CountdownTimer } from "./CountdownTimer";
-import { Card, CardContent } from "../ui/card";
-import { CountDownCard } from "./CountDownCard";
+import Link from 'next/link';
 
 export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
 
   const userAlreadyBid = liveLot?.bidsHistory.some((bid) => bid.isUserBid === true)
+  const isLive = liveLot?.lot.status
 
   return (
     <div className="w-full flex flex-col md:flex-row gap-14">
@@ -38,12 +38,20 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
             <Alert className={liveLot?.userStatus.isWinning ? "text-green-400" : "text-red-400"}>
               {liveLot?.userStatus.isWinning ? <CheckCircle2Icon /> : <AlertCircleIcon />}
               <AlertTitle>
-                {!userAlreadyBid ? "Você ainda não fez lances" : liveLot?.userStatus.isWinning ? 'Você está ganhando!' : 'Você foi superado...'}
+                {liveLot?.lot.status === 'SCHEDULED' 
+                  ? `Lote ainda não inciado` 
+                  : !userAlreadyBid ? "Você ainda não fez lances" 
+                  : liveLot?.userStatus.isWinning 
+                  ? 'Você está ganhando!' : 'Você foi superado...'}
               </AlertTitle> 
+              {liveLot?.lot.status === 'SCHEDULED' && 
+              <AlertDescription>
+                Agendado para {new Date(liveLot.lot.startTime).toLocaleDateString('pt-BR')}, {new Date(liveLot.lot.startTime).toLocaleTimeString('pt-BR')}
+              </AlertDescription>}
             </Alert>
           </div>
 
-          <CountDownCard endTime={liveLot?.lot.endTime || ""}/>
+          {liveLot?.lot.status === 'LIVE' && <CountdownTimer endTime={liveLot?.lot.endTime || ""}/>}
 
           <div className="flex gap-10 items-center">
             {liveLot?.currentLeader ? (
@@ -66,8 +74,12 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
         </div>
 
         <div className="flex gap-5 mt-10">
-  
-          <Button variant="secondary" onClick={() => redirect(`/laudo/${liveLot?.lot.id}`)}>Ver Laudo</Button>
+          <Link 
+            href={`/integridade/${liveLot?.lot.id}`} 
+            className={buttonVariants({ variant: 'secondary' })}
+          >
+            Integridade
+          </Link>
         </div>
       </div>
     </div>

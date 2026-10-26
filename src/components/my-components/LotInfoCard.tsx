@@ -99,7 +99,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
                 <Alert className="text-orange-400">
                     <AlertCircleIcon />
                   <AlertTitle>
-                    {lotData?.status === 'LIVE' ? "O Lote ainda não possui lances" : "O Lote foi encerrado sem lances"}
+                    {lotData?.status === 'LIVE' ? "O Lote ainda não possui lances" : lotData?.status === 'SCHEDULED' ? "Este Lote ainda não foi iniciado" : "O Lote foi encerrado sem lances"}
                   </AlertTitle>
                 </Alert>
               </div>
