@@ -1,13 +1,16 @@
 "use client"
 
-import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
+import { LeiloeiroLotCard } from '@/components/my-components/LeiloeiroLotCard'
 import { Spinner } from '@/components/ui/spinner'
+import useAuthRedirect from '@/hooks/useAuthRedirect'
 import useMyPublishedLots from '@/hooks/useMyPublishedLots'
 import { ArrowLeftIcon } from 'lucide-react'
 import Link from 'next/link'
 
 export default function MeusLotesPage() {
+  useAuthRedirect('LEILOEIRO')
+
   const {
     lots,
     isPublishedLotsPending,
@@ -42,7 +45,7 @@ export default function MeusLotesPage() {
       <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
         {lots.map((lot) => (
           <div key={lot.id}>
-            <CarouselLotCard lot={lot} />
+            <LeiloeiroLotCard lot={lot} />
           </div>
         ))}
       </div>

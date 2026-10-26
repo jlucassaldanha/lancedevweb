@@ -111,7 +111,7 @@ export default function Home() {
               {finishedLots.length > 0 ? (
                 <MainLotCard lot={finishedLots[0]} />
               ) : (
-                <span>Não há lotes publicados Ao vivo nesse momento</span>
+                <span>Não há lotes finalizados</span>
               )}
 
               {finishedLots.length > 1 && (

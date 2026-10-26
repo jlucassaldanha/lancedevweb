@@ -1,7 +1,7 @@
 "use client"
 
-import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
+import { LeiloeiroLotCard } from '@/components/my-components/LeiloeiroLotCard'
 import { buttonVariants } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Separator } from '@/components/ui/separator'
@@ -78,7 +78,7 @@ export default function DashboardPage() {
             <CarouselContent>
               {lots.map((lot) => (
                 <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
-                  <CarouselLotCard lot={lot}/>
+                  <LeiloeiroLotCard lot={lot}/>
                 </CarouselItem>
               ))}
             </CarouselContent>
