@@ -1,6 +1,7 @@
 "use client"
 
 import { AuditCard } from "@/components/my-components/AuditCard";
+import { ErrorCard } from '@/components/my-components/ErrorCard';
 import { LotInfoCard } from "@/components/my-components/LotInfoCard";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
@@ -31,6 +32,12 @@ export default function ComprovantePage() {
 
       <Separator className="my-5"/>
 
+      {auditError?.message && (
+        <div className='w-full mb-5'>
+          <ErrorCard message={auditError.message} title="Busca de Lotes"/>
+        </div>
+      )}
+
       <LotInfoCard 
         comprovante
         imgUrl={receiptData?.imageUrl || ""}
@@ -42,6 +49,12 @@ export default function ComprovantePage() {
       {!receiptData?.message && (
         <div className="w-full flex flex-col gap-2">        
           <Separator className="my-5"/>
+
+          {receiptError?.message && (
+            <div className='w-full mb-5'>
+              <ErrorCard message={receiptError.message} title="Busca de Lotes"/>
+            </div>
+          )}
 
           <AuditCard 
             comprovante

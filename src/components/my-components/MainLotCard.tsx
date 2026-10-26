@@ -4,8 +4,7 @@ import { PublicLot } from "@/types/lots";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
-import { Button, buttonVariants } from "../ui/button";
-import { redirect } from "next/navigation";
+import { buttonVariants } from "../ui/button";
 import { CountdownTimer } from './CountdownTimer';
 import Link from 'next/link';
 

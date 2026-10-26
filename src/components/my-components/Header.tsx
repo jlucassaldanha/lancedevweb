@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { LogoLanceDev } from "./LogoLanceDev";
 import { Button, buttonVariants } from "../ui/button";
-import { redirect, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { ThemeButton } from "./ThemeButton";
 import { useAuth } from "@/contexts/authContext";
 import { logoutAction } from "@/actions/auth";

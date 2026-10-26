@@ -1,6 +1,7 @@
 "use client"
 
 import { AuditCard } from "@/components/my-components/AuditCard";
+import { ErrorCard } from '@/components/my-components/ErrorCard';
 import { LotInfoCard } from "@/components/my-components/LotInfoCard";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
@@ -28,12 +29,24 @@ export default function IntegridadePage() {
       <div>
         <Link href="/" className="flex gap-2 mb-5">
           <ArrowLeftIcon />
-          Voltar ao Lotes
+          Voltar aos Lotes
         </Link>
       </div>
 
+      {auditError?.message && (
+        <div className='w-full m-5'>
+          <ErrorCard message={auditError.message} title="Busca de Lotes"/>
+        </div>
+      )}
+
+      {lotDataError?.message && (
+        <div className='w-full m-5'>
+          <ErrorCard message={lotDataError.message} title="Busca de Lotes"/>
+        </div>
+      )}
+
       <LotInfoCard 
-        imgUrl={auditData?.lotImageUrl || ""}
+        imgUrl={auditData?.lotImageUrl || "/placeholder.png"}
         title={auditData?.lotTitle || ""}
         auditData={auditData}
         lotData={lotData}

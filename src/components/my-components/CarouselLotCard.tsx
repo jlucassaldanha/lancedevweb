@@ -3,8 +3,7 @@
 import { PublicLot } from "@/types/lots";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
-import { Button, buttonVariants } from "../ui/button";
-import { redirect } from "next/navigation";
+import { buttonVariants } from "../ui/button";
 import { CountdownTimer } from './CountdownTimer';
 import Link from 'next/link';
 
@@ -31,7 +30,7 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
           {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}
 
           <div className="flex gap-10 items-center">
-            {lot._count.bids > 0 ? (
+            {lot.bids.length > 0 ? (
                 <div className="flex flex-col gap-2"> 
                   <span>Maior Lance</span>
                   <span className="text-xl font-serif">R$ {Number(lot.bids[0].amount).toFixed(2)}</span>
