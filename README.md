@@ -2,6 +2,14 @@
 
 Este é o repositório do front-end para o desafio da Casa de Leilões online. A interface foi construída para consumir a API REST do sistema, focando em uma experiência de usuário fluida, responsiva e alinhada à identidade visual proposta.
 
+### Aplicação publicada
+
+| Recurso | Endereço |
+| --- | --- |
+| Aplicação | https://lancedevweb.vercel.app |
+| API | https://lancedev-production.up.railway.app/ |
+| Swagger | https://lancedev-production.up.railway.app/api-docs/ |
+
 #### Decisões Técnicas e Arquitetura
 
 Para garantir uma interface escalável, manutenível e entregue dentro do prazo, as seguintes decisões foram tomadas:
