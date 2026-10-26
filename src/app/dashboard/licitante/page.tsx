@@ -2,7 +2,7 @@
 
 import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
 import { CarouselWinningCard } from '@/components/my-components/CarouselWinningCard'
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
@@ -44,12 +44,12 @@ export default function ArrematesPage() {
 
       <Separator className="mt-5" />
 
-      <div className='w-full flex gap-5 justify-between items-end mt-10'>
+      <div className='w-full flex flex-col md:flex-row gap-5 justify-between md:items-end mt-10'>
         <div className='flex flex-col font-bold'>
           <span>Saldo Livre atual</span>
           <span className='font-serif text-primary'>R$ {Number(walletValues?.availableBalance).toFixed(2)}</span>
         </div>
-        <Button onClick={() => redirect('/carteira')}>Ir para a carteira</Button>
+        <Link href={'/carteira'} className={buttonVariants()}>Ir para a carteira</Link>
       </div>
 
       <Separator className="my-5" />
