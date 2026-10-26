@@ -28,7 +28,7 @@ export default function IntegridadePage() {
       <div>
         <Link href="/" className="flex gap-2 mb-5">
           <ArrowLeftIcon />
-          Voltar ao Lotes
+          Voltar aos Lotes
         </Link>
       </div>
 
