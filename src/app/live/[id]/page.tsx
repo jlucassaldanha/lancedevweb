@@ -21,7 +21,7 @@ export default function LivePage() {
   
   const { liveData, isLivePending, liveError } = useLiveLot()
 
-  const { control, isPending, error, handleSubmit, onSubmit } = useMakeBid()
+  const { control, isPending, error, handleSubmit, onSubmit, register } = useMakeBid()
 
   const {
     walletValues,
@@ -66,6 +66,7 @@ export default function LivePage() {
                         {...field}
                         id="amount" 
                         aria-invalid={fieldState.invalid}
+                        {...register("amount", { valueAsNumber: true })} 
                         placeholder='Valor do lance'
                         type='number'
                       />

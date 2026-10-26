@@ -27,7 +27,7 @@ export default function useMakeBid() {
     }
   })
 
-  const { handleSubmit, control, reset } = useForm<BidFormData>({
+  const { register, handleSubmit, control, reset } = useForm<BidFormData>({
     resolver: zodResolver(formSchema)
   })
 
@@ -43,5 +43,6 @@ export default function useMakeBid() {
     error,
     handleSubmit,
     onSubmit,
+    register
   }
 }

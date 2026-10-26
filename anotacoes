@@ -16,6 +16,8 @@ lotes sem lances encontran-se como integros
 consciencia de que foram usadas muitas strings vazias por conta do tempo
 lotes ao vivo encontra-se como encerrado quando sem lances no laudo
 
+fazer um lance recarrega a pagina toda
+
 coisas feitas:
 mudança de temas aplicadas
 login/registro
