@@ -6,6 +6,7 @@ import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import { redirect } from "next/navigation";
+import { CountDownCard } from "./CountDownCard";
 
 export function MainLotCard({ lot }: { lot: PublicLot }) {
   const status = lot.status === "LIVE" 
@@ -27,11 +28,12 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
       </div>
 
       <div className="flex flex-col gap-5 md:w-2/4">
-        <span className="text-5xl font-serif">{lot.title}</span>
+        <span className="text-4xl font-serif">{lot.title}</span>
         <Separator />
-        <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col justify-between h-full gap-3">
           <Badge variant="secondary" className="mt-5">{status}</Badge>
 
+          {lot.status === 'LIVE' && <CountDownCard endTime={lot.endTime}/>}
 
           <div className="flex gap-10 items-center">
             {lot._count.bids > 0 ? (

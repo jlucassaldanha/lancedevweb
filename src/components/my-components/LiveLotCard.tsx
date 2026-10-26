@@ -9,6 +9,7 @@ import { Alert, AlertTitle } from "../ui/alert";
 import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 import { CountdownTimer } from "./CountdownTimer";
 import { Card, CardContent } from "../ui/card";
+import { CountDownCard } from "./CountDownCard";
 
 export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
 
@@ -29,7 +30,7 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
       </div>
 
       <div className="flex flex-col gap-5 md:w-2/4">
-        <span className="text-5xl font-serif">{liveLot?.lot.title}</span>
+        <span className="text-4xl font-serif">{liveLot?.lot.title}</span>
         <Separator />
 
         <div className="flex flex-col justify-between h-full gap-3">
@@ -42,12 +43,7 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
             </Alert>
           </div>
 
-          <Card>
-            <CardContent className="flex flex-col gap-2 font-bold">
-              <span>Contagem regressiva para o encerramento do Lote</span>
-              <CountdownTimer endTime={liveLot?.lot.endTime || ""}/>
-            </CardContent>
-          </Card>
+          <CountDownCard endTime={liveLot?.lot.endTime || ""}/>
 
           <div className="flex gap-10 items-center">
             {liveLot?.currentLeader ? (

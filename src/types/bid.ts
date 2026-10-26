@@ -7,3 +7,9 @@ export interface Bid {
   hash: string,
   previousHash: string
 }
+
+export interface MakeBid {
+  message?: string
+  success?: string
+  error?: string
+}
