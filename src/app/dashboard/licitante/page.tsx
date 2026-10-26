@@ -14,7 +14,7 @@ import useWalletValues from '@/hooks/useWalletValues'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 
-export default function ArrematesPage() {
+export default function DashboardPage() {
   useAuthRedirect('LICITANTE')
 
   const {
@@ -60,7 +60,7 @@ export default function ArrematesPage() {
       <div className='w-full flex flex-col md:flex-row gap-5 justify-between md:items-end mt-10'>
         <div className='flex flex-col font-bold'>
           <span>Saldo Livre atual</span>
-          <span className='font-serif text-primary'>R$ {Number(walletValues?.availableBalance).toFixed(2)}</span>
+          <span className='font-serif text-primary text-2xl'>R$ {Number(walletValues?.availableBalance).toFixed(2)}</span>
         </div>
         <Link href={'/carteira'} className={buttonVariants()}>Ir para a carteira</Link>
       </div>

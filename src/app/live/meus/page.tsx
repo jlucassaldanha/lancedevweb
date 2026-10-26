@@ -10,7 +10,7 @@ import useMyLiveLots from '@/hooks/useMyLiveLots'
 import { ArrowLeftIcon } from 'lucide-react'
 import Link from 'next/link'
 
-export default function ArrematesPage() {
+export default function MeuLivePage() {
   useAuthRedirect('LICITANTE')
 
   const {

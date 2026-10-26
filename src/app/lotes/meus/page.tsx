@@ -4,12 +4,11 @@ import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
-import useListLots from '@/hooks/useListLots'
 import useMyPublishedLots from '@/hooks/useMyPublishedLots'
 import { ArrowLeftIcon } from 'lucide-react'
 import Link from 'next/link'
 
-export default function LotesProgramadosPage() {
+export default function MeusLotesPage() {
   const {
     lots,
     isPublishedLotsPending,
