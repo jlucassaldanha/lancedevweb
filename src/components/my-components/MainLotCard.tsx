@@ -62,7 +62,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
             <Link href={`/live/${lot.id}`} className={buttonVariants()}>Ver Ao Vivo</Link>
           )}
           {lot.status !== 'SCHEDULED' && (
-            <Link href={`/integridade/${lot.id}`} className={buttonVariants({ variant: 'secondary' })}>Ver Laudo</Link>
+            <Link href={`/integridade/${lot.id}`} className={buttonVariants({ variant: 'secondary' })}>Integridade</Link>
           )}
         </div>
       </div>

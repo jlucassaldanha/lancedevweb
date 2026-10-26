@@ -64,7 +64,7 @@ export function CarouselLotCard({ lot }: { lot: PublicLot }) {
               href={`/integridade/${lot.id}`}
               className={buttonVariants({ variant: 'secondary' })}
             >
-              Ver Integridade
+              Integridade
             </Link>
           )}
         </div>

@@ -22,8 +22,13 @@ export function CarouselWinningCard({ winning }: { winning: MyWinning }) {
 
       <Separator />
 
+      <div className='flex flex-col gap-1'>
+        <span>Valor Arrematado</span>
+        <span className='font-serif text-primary'>{Number(winning.amount).toFixed(2)}</span>
+      </div>
+
       <div className="flex gap-5 mt-5">
-        <Link href={`/arremates/comprovante/${winning.lotId}`} className={buttonVariants()}>Ver Comprovante do Lote</Link>
+        <Link href={`/arremates/comprovante/${winning.lotId}`} className={buttonVariants()}>Ver Comprovante</Link>
       </div>
     </div>
   )

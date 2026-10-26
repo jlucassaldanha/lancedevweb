@@ -78,7 +78,7 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
             href={`/integridade/${liveLot?.lot.id}`} 
             className={buttonVariants({ variant: 'secondary' })}
           >
-            Ver Integridade
+            Integridade
           </Link>
         </div>
       </div>
