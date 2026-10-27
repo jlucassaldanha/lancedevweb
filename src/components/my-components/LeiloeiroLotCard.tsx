@@ -3,12 +3,20 @@
 import { PublicLot } from "@/types/lots";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
-import { buttonVariants } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { CountdownTimer } from './CountdownTimer';
 import Link from 'next/link';
 import { Bubble, BubbleContent } from "../ui/bubble";
+import useCancelLot from "@/hooks/useCancelLot";
+import { ErrorCard } from "./ErrorCard";
 
 export function LeiloeiroLotCard({ lot }: { lot: PublicLot }) {
+  const {
+    mutate,
+    isPending,
+    error
+  } = useCancelLot()
+
   const status = lot.status === "LIVE" 
     ? 'Ao Vivo' : lot.status === "FINISHED" 
     ? 'Finalizado' : lot.status === 'CANCELLED' ? 'Cancelado' : 'Programado'
@@ -79,14 +87,20 @@ export function LeiloeiroLotCard({ lot }: { lot: PublicLot }) {
             </Link>
           )}
           {(lot.bids.length <= 0 && (lot.status === 'LIVE' || lot.status === 'SCHEDULED')) && (
-            <Link 
-              href={`/cancel`}
-              className={buttonVariants({ variant: 'destructive' })}
+            <Button 
+              variant="destructive"
+              onClick={() => mutate(lot.id)}
             >
-              Cancelar Lote
-            </Link>
+              {isPending ? "Cancelando..." : "Cancelar Lote"}
+            </Button>
           )}
         </div>
+
+        {error?.message && (
+          <div className='w-full m-5'>
+            <ErrorCard message={error.message} title="Busca de Lotes"/>
+          </div>
+        )}
       </div>
       
     </div>
