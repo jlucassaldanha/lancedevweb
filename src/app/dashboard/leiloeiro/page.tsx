@@ -1,5 +1,6 @@
 "use client"
 
+import { BalanceComponent } from '@/components/my-components/BalanceComponent'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
 import { LeiloeiroLotCard } from '@/components/my-components/LeiloeiroLotCard'
 import { buttonVariants } from '@/components/ui/button'
@@ -48,10 +49,7 @@ export default function DashboardPage() {
       )}
 
       <div className='w-full flex flex-col md:flex-row gap-5 justify-between md:items-end mt-10'>
-        <div className='flex flex-col font-bold'>
-          <span>Saldo atual</span>
-          <span className='font-serif text-primary text-2xl'>R$ {Number(walletValues?.availableBalance).toFixed(2)}</span>
-        </div>
+        <BalanceComponent availableBalance={walletValues?.availableBalance}/>
         <Link href={'/lotes/publicar'} className={buttonVariants()}>Publicar novo Lote</Link>
       </div>
 

@@ -1,5 +1,6 @@
 "use client"
 
+import { BalanceComponent } from '@/components/my-components/BalanceComponent'
 import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
 import { CarouselWinningCard } from '@/components/my-components/CarouselWinningCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
@@ -56,11 +57,41 @@ export default function DashboardPage() {
       )}
 
       <div className='w-full flex flex-col md:flex-row gap-5 justify-between md:items-end mt-10'>
-        <div className='flex flex-col font-bold'>
-          <span>Saldo Livre atual</span>
-          <span className='font-serif text-primary text-2xl'>R$ {Number(walletValues?.availableBalance).toFixed(2)}</span>
-        </div>
+        <BalanceComponent availableBalance={walletValues?.availableBalance}/>
         <Link href={'/carteira'} className={buttonVariants()}>Ir para a carteira</Link>
+      </div>
+
+      <Separator className="my-5"/>
+
+      <div className='w-full flex flex-col gap-3'>
+        <span className='text-2xl font-bold text-secondary'>Lotes que dei Lance Ao Vivo</span>
+
+        {liveLotsError?.message && (
+          <div className='w-full m-5'>
+            <ErrorCard message={liveLotsError.message} title="Busca de Lotes"/>
+          </div>
+        )}
+
+        <div className='w-full flex justify-end'>
+          <Link href="/live/meus" className="flex gap-2 mb-5">
+            Ver mais Ao Vivo
+            <ArrowRightIcon />
+          </Link>
+        </div>
+        
+        <div>
+          <Carousel opts={{ align: "start" }} >
+            <CarouselContent>
+              {lots.map((lot) => (
+                <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
+                  <CarouselLotCard lot={lot}/>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
       </div>
 
       <Separator className="my-5" />
@@ -96,38 +127,7 @@ export default function DashboardPage() {
         </div>
       </div>
       
-      <Separator className="my-5"/>
-
-      <div className='w-full flex flex-col gap-3'>
-        <span className='text-2xl font-bold text-secondary'>Lotes que dei Lance Ao Vivo</span>
-
-        {liveLotsError?.message && (
-          <div className='w-full m-5'>
-            <ErrorCard message={liveLotsError.message} title="Busca de Lotes"/>
-          </div>
-        )}
-
-        <div className='w-full flex justify-end'>
-          <Link href="/live/meus" className="flex gap-2 mb-5">
-            Ver mais Ao Vivo
-            <ArrowRightIcon />
-          </Link>
-        </div>
-        
-        <div>
-          <Carousel opts={{ align: "start" }} >
-            <CarouselContent>
-              {lots.map((lot) => (
-                <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
-                  <CarouselLotCard lot={lot}/>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
-      </div>
+      
     </div>
   )
 }
