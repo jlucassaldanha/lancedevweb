@@ -22,6 +22,8 @@ import { Controller } from 'react-hook-form';
 export default function PublicarLotesPage() {
   useAuthRedirect('LEILOEIRO')
 
+  const [selectedArt, setSelectedArt] = useState<MetObj | null>(null)
+
   const {
     isFetching,
     error,
@@ -32,15 +34,21 @@ export default function PublicarLotesPage() {
     clearSearch
   } = useSearchMet()
 
-  const [selectedArt, setSelectedArt] = useState<MetObj | null>(null);
 
-  const { control: createControl, handleSubmit: handleCreateSubmit, setValue, onSubmit: onCreateSubmit, formErrors, isPending, isSuccess, error: createError } = useCreateLot()
+  const { 
+    control: createControl,
+    handleSubmit: handleCreateSubmit, 
+    setValue, 
+    onSubmit: onCreateSubmit, 
+    formErrors, 
+    isPending, 
+    isSuccess, 
+    error: createError 
+  } = useCreateLot()
 
   const handleSelectArt = (art: MetObj) => {
     setSelectedArt(art)
-
     setValue('externalItemId', String(art.objectID), { shouldValidate: true });
-
     clearSearch()
 
     createLotSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -107,16 +115,11 @@ export default function PublicarLotesPage() {
         )}
       </div>
 
-      
-
       <section
         ref={createLotSectionRef}
       >
         <Separator className="my-5"/>
         
-        <div>
-          
-        </div>
         <span className='text-3xl font-bold text-secondary'>Criar novo Lote</span>
 
         {!selectedArt && (
@@ -128,8 +131,7 @@ export default function PublicarLotesPage() {
         {selectedArt && (
           <div className='flex flex-col md:flex-row w-full gap-10'>
             <div className='flex flex-col w-1/2'>
-              
-
+          
               <div className="mb-8">
                 <span className='text-lg font-bold text-primary'>Arte selecionada:</span>
                 <MetArtCard art={selectedArt}/>
@@ -209,6 +211,12 @@ export default function PublicarLotesPage() {
                     )}
                   />
                 </div>
+
+                {formErrors?.externalItemId && (
+                  <div className='w-full m-5'>
+                    <ErrorCard message="Selecione uma arte para publicar" title="Erro"/>
+                  </div>
+                )}
 
                 {createError?.message && (
                   <div className='w-full m-5'>

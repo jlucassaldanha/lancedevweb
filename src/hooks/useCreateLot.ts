@@ -38,5 +38,15 @@ export default function useCreateLot() {
     mutate(data);
   };
 
-  return { control, handleSubmit, setValue, watch, onSubmit, formErrors, isPending, isSuccess, error };
+  return { 
+    control, 
+    handleSubmit, 
+    setValue, 
+    watch, 
+    onSubmit, 
+    formErrors, 
+    isPending, 
+    isSuccess, 
+    error 
+  };
 }
