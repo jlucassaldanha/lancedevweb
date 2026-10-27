@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export default function useAuthRedirect(role: UserRole) {
   const auth = useAuth();
 
-  if (!auth.token) {
+  if (!auth.token || !auth.user) {
     redirect('/login')
   }
 

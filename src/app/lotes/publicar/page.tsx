@@ -13,7 +13,6 @@ import useAuthRedirect from '@/hooks/useAuthRedirect';
 import useCreateLot from '@/hooks/useCreateLot';
 import useSearchMet from '@/hooks/useSearchMet';
 import { MetObj } from '@/types/met';
-import { spawn } from 'child_process';
 import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
@@ -130,7 +129,7 @@ export default function PublicarLotesPage() {
 
         {selectedArt && (
           <div className='flex flex-col md:flex-row w-full gap-10'>
-            <div className='flex flex-col w-1/2'>
+            <div className='flex flex-col md:w-1/2'>
           
               <div className="mb-8">
                 <span className='text-lg font-bold text-primary'>Arte selecionada:</span>
