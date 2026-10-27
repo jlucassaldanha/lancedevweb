@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import z from 'zod'
 
 const formSchema = z.object({
-  amount: z.number().min(1, 'Você deve escolher um valor maior que zero para o deposito'),
+  amount: z.number('Você deve digitar um valor no campo').min(1, 'Você deve escolher um valor maior que zero para o deposito'),
 })
 
 export type DepositFormData = z.infer<typeof formSchema>

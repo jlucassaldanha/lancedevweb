@@ -79,19 +79,24 @@ export default function DashboardPage() {
           </Link>
         </div>
         
-        <div>
-          <Carousel opts={{ align: "start" }} >
-            <CarouselContent>
-              {lots.map((lot) => (
-                <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
-                  <CarouselLotCard lot={lot}/>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
+        {lots.length === 0 ? (
+          <span>Você não possui lotes nessa sessão</span>
+        ) : (
+          <div>
+            <Carousel opts={{ align: "start" }} >
+              <CarouselContent>
+                {lots.map((lot) => (
+                  <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
+                    <CarouselLotCard lot={lot}/>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        
+        )}
       </div>
 
       <Separator className="my-5" />
@@ -111,23 +116,25 @@ export default function DashboardPage() {
             <ArrowRightIcon />
           </Link>
         </div>
-        
-        <div>
-          <Carousel opts={{ align: "start" }} >
-            <CarouselContent>
-              {winnings.map((winning) => (
-                <CarouselItem key={winning.lotId} className="md:basis-1/2 lg:basis-1/3 flex">
-                  <CarouselWinningCard winning={winning}/>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
+
+        {winnings.length === 0 ? (
+          <span>Você não possui lotes nessa sessão</span>
+        ) : (
+          <div>
+            <Carousel opts={{ align: "start" }} >
+              <CarouselContent>
+                {winnings.map((winning) => (
+                  <CarouselItem key={winning.lotId} className="md:basis-1/2 lg:basis-1/3 flex">
+                    <CarouselWinningCard winning={winning}/>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        )}
       </div>
-      
-      
     </div>
   )
 }

@@ -71,19 +71,24 @@ export default function DashboardPage() {
           </Link>
         </div>
         
-        <div>
-          <Carousel opts={{ align: "start" }} >
-            <CarouselContent>
-              {lots.map((lot) => (
-                <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
-                  <LeiloeiroLotCard lot={lot}/>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
+        {lots.length === 0 ? (
+          <span>Você não possui lotes publicados</span>
+        ) : (
+          <div>
+            <Carousel opts={{ align: "start" }} >
+              <CarouselContent>
+                {lots.map((lot) => (
+                  <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
+                    <LeiloeiroLotCard lot={lot}/>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        )}
+        
       </div>
 
     </div>
