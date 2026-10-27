@@ -5,9 +5,11 @@ import { AuditInfo } from "@/types/audit"
 
 export async function getLotAuditInfoAction(id: string) {
   try {
-    return await apiFetch<AuditInfo>(`/lots/${id}/audit`)
+    const response = await apiFetch<AuditInfo>(`/lots/${id}/audit`)
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro tentando auditar Lote:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }

@@ -5,7 +5,15 @@ import { useQuery } from '@tanstack/react-query';
 export default function useMyPublishedLots() {
   const { data: lots = [], isPending: isPublishedLotsPending, error: publishedLotsError } = useQuery<PublicLot[]>({
     queryKey: ['my-published-lots'],
-    queryFn: async () => await listMyPublishedLotsAction()
+    queryFn: async () => {
+      const response = await listMyPublishedLotsAction()
+      
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    }
   })
 
   return {

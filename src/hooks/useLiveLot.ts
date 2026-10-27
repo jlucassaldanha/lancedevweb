@@ -8,8 +8,16 @@ export default function useLiveLot() {
   
   const { data: liveData, isPending: isLivePending, error: liveError } = useQuery<LiveLot>({
     queryKey: ['live-lot', id],
-    queryFn: async () => await getLiveRoomStatusByIdAction(id),
-    refetchInterval: 2000,
+    queryFn: async () => {
+      const response = await getLiveRoomStatusByIdAction(id)
+      
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    },
+    refetchInterval: 5000,
   })
 
   return {

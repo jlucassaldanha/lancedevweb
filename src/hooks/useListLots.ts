@@ -5,7 +5,15 @@ import { useQuery } from "@tanstack/react-query";
 export default function useListLots() {
   const { data: lots = [], isPending, isError, error } = useQuery<PublicLot[]>({
     queryKey: ['public-lots'],
-    queryFn: async () => await listPublicLotsActions()
+    queryFn: async () => {
+      const response = await listPublicLotsActions()
+      
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    }
   })
   
   const liveLots = lots.filter((lot) => lot.status === 'LIVE')

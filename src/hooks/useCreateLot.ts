@@ -27,7 +27,15 @@ export default function useCreateLot() {
   });
 
   const { mutate, isPending, error, isSuccess } = useMutation({
-    mutationFn: createLotAction,
+    mutationFn: async (data: CreateLotFormData) => {
+      const response = await createLotAction(data)
+      
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['my-published-lots'] });
       reset();

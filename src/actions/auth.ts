@@ -40,7 +40,8 @@ export async function loginAction(email: string, password: string) {
 
     return { success: true, user: response.user };
   } catch (error) {
-    console.error(error)
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 
@@ -53,7 +54,8 @@ export async function registerAction(name: string, email: string, password: stri
 
     redirect('/login')
   } catch (error) {
-    console.error(error)
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 

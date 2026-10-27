@@ -26,7 +26,13 @@ export default function useSearchMet() {
     queryKey: ['met-search', submittedSearch],
     queryFn: async () => {
       if (!submittedSearch) return []
-      return await searchArtAction(submittedSearch)
+      const response = await searchArtAction(submittedSearch)
+
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
     },
     enabled: submittedSearch.length > 0
   })

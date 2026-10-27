@@ -10,12 +10,28 @@ export default function useReceipt() {
   
   const { data: receiptData, isPending: isPendingReceipt, error: receiptError } = useQuery<LotReceipt>({
     queryKey: ['lot-receipt', id],
-    queryFn: async () => await getReceiptByIdAction(id)
+    queryFn: async () => {
+      const response = await getReceiptByIdAction(id)
+      
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    }
   })
 
   const { data: auditData, isPending: isPendingAudit, error: auditError } = useQuery<AuditInfo>({
     queryKey: ['audit-lot', id],
-    queryFn: async () => await getLotAuditInfoAction(id)
+    queryFn: async () => {
+      const response = await getLotAuditInfoAction(id)
+    
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    }
   })
 
   const isPending = isPendingAudit || isPendingReceipt

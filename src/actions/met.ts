@@ -9,9 +9,11 @@ export async function searchArtAction(query: string) {
   })
 
   try {
-    return await apiFetch<MetObj[]>(`/lots/search?${params.toString()}`)
+    const response = await apiFetch<MetObj[]>(`/lots/search?${params.toString()}`)
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro ao obter dados da sessão ao vivo:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
