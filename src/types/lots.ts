@@ -1,4 +1,3 @@
-import { string } from "zod"
 import { Bid } from "./bid"
 
 export type LotStatus = 'LIVE' | 'FINISHED' | 'CANCELLED' | 'SCHEDULED'
@@ -76,4 +75,21 @@ export interface MyWinning {
     closedAt: string
     winnerId: string
   }
+}
+
+export interface CancelLotResponse {
+  message: string
+}
+
+export interface CreateLot {
+  externalItemId: string
+  startingBid: Number
+  minimumIncrement: Number
+  startTime: string
+  endTime: string
+}
+
+export interface CreateLotResponse {
+  message: string
+  lot: PublicLot
 }

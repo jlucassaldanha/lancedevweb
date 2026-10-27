@@ -1,7 +1,7 @@
 "use server"
 
 import { apiFetch } from "@/lib/api"
-import { LiveLot, LotReceipt, MyWinning, PublicLot } from "@/types/lots"
+import { CancelLotResponse, CreateLot, CreateLotResponse, LiveLot, LotReceipt, MyWinning, PublicLot } from "@/types/lots"
 
 export async function listPublicLotsActions() {
   try {
@@ -62,6 +62,35 @@ export async function listMyPublishedLotsAction() {
     return await apiFetch<PublicLot[]>('/lots/my-lots')
   } catch (error) {
     console.error('Erro ao obter lista de lotes publicados do usuário:', error)
+    throw error
+  }
+}
+
+export async function cancelLotAction(id: string) {
+  try {
+    return await apiFetch<CancelLotResponse>(`/lots/${id}`, {
+      method: 'PATCH'
+    })
+  } catch (error) {
+    console.error('Erro ao tentar fazer deposito:', error)
+    throw error
+  }
+}
+
+export async function createLotAction(data: CreateLot) { 
+  const payload = {
+    ...data,
+    startTime: new Date(data.startTime).toISOString(),
+    endTime: new Date(data.endTime).toISOString()
+  }
+
+  try {
+    return await apiFetch<CreateLotResponse>('/lots', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+  } catch (error) {
+    console.error('Erro ao tentar criar lote:', error)
     throw error
   }
 }
