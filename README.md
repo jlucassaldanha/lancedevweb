@@ -20,28 +20,33 @@ Para garantir uma interface escalável, manutenível e entregue dentro do prazo,
 *   **TanStack Query, React Hook Form e Zod:** A trindade escolhida para gerenciamento de estado assíncrono e formulários. O TanStack Query facilita o consumo da API e o *caching*, enquanto o React Hook Form aliado ao Zod garante validações de formulário (como login e registro) performáticas e seguras no lado do cliente.
 *   **Prototipação com Stitch:** Utilizado na fase inicial para criar os esboços e wireframes das telas, garantindo que a estrutura visual estivesse sólida antes de iniciar a codificação.
 *   **Reaproveitamento Estrutural:** Para otimizar o tempo de desenvolvimento, grande parte da base estrutural do projeto, como *Providers* (de tema e query) e funções utilitárias, foi reaproveitada de códigos validados de projetos pessoais anteriores (como o *ticketdev*).
+*   **Abstração e Tipos Genéricos:** Criação de interfaces e tipos genéricos reutilizáveis para padronizar as respostas da API e simplificar a integração entre componentes de listagens.
 
 #### O que foi feito até agora
 
 A aplicação já contempla as seguintes funcionalidades operacionais:
 
 *   **Sistema de Temas (Dark/Light Mode):** Implementação completa da alternância de temas, utilizando as variáveis CSS baseadas em `oklch` para garantir a identidade visual (fundo Azul Marinho no escuro e base limpa no claro).
-*   **Autenticação:** Telas de Login e Registro perfeitamente funcionais e integradas.
-*   **Vitrine de Lotes:** A tela inicial (pública) exibindo a listagem dos itens leiloados além das telas de listagem completa.
-*   **Comprovante de Arremate:** Tela para visualização e compartilhamento do recibo de itens arrematados.
+*   **Autenticação & Controle de Acesso:** Telas de Login e Registro com validação de formulários e redirecionamento baseado no papel (*Role*) do usuário (Leiloeiro vs. Licitante).
+*   **Vitrine e Listagem de Lotes:** Exibição pública e categorizada de lotes **Ao Vivo**, **Programados (Agendados)** e **Finalizados**.
+*   **Comprovante de Arremate Público:** Emissão e compartilhamento por link de recibos de leilões finalizados com mascaramento de dados por privacidade.
 *   **Integridade / Auditoria:** Página pública para conferência de integridade e histórico de lances de um lote.
-*   **Carteira do Usuário:** Consulta de saldo e funcionalidade de depósito simulado.
-*   **Meus arremates:** Tela com listagem dos arremates do usuário logado.
-*   **Meus Lotes:** Tela com listagem dos lotes publicados pelo usuário logado.
-*   **Dashboard:** Dashboard de usuário para licitante e leiloeiro mostrando informações principais.
+*   **Carteira do Usuário:** Consulta de saldo (total, comprometido e disponível) e funcionalidade de depósito simulado exclusivo para licitantes.
+*   **Meus Arremates:** Tela de acompanhamento para o licitante consultar os lotes arrematados e acessar seus recibos.
+*   **Gestão de Lotes ("Meus Lotes"):** Painel exclusivo para o leiloeiro visualizar seus lotes publicados e realizar cancelamentos permitidos.
+*   **Dashboards:** Visão geral adaptada para perfis de Licitante e Leiloeiro com atalhos e métricas principais.
+*   **Criação de Lotes (Painel do Leiloeiro):** Interface de busca integrada à API do *The Metropolitan Museum of Art*, permitindo selecionar a obra, auto-preencher dados e definir regras financeiras (lance inicial, incremento mínimo e intervalo de datas).
+*   **Sala do Lote Ao Vivo:** Disputa em tempo real com atualizações contínuas via *polling*, exibindo o maior lance, histórico mascarado por privacidade e indicadores visuais de liderança ("Você está ganhando" / "Você foi superado").
+
 
 #### Comportamentos Inesperados e Limitações Conhecidas
 
 Devido ao tempo restrito para a entrega do desafio, os seguintes pontos são de conhecimento técnico e assumidos como *trade-offs* da versão atual:
 
-*   **Lotes sem lances constando como "Íntegros":** Na página de integridade, lotes recém-criados que ainda não receberam nenhum lance estão sendo exibidos com a flag de integridade ativa, mesmo não possuindo histórico na cadeia de *hashes* para validar.
-*   **Uso excessivo de Strings Vazias:** Pelo tempo reduzido, algumas tipagens e inicializações de estado precisaram utilizar *strings* vazias (`""`) ao invés de tratamentos mais robustos de `null` ou `undefined`, o que pode gerar uma necessidade de refatoração futura em cenários mais estritos.
-*  **Semântica HTML Reduzida:** Estruturação visual focada em agilidade, apresentando uso de tags HTML menos semânticas em determinados componentes visuais.
+1.  **Termos e Buscas da API do *The Met* em Inglês:** Por integrar a API pública do *The Metropolitan Museum of Art*, os títulos, autores e termos das obras de arte estão em inglês, exigindo que pesquisas por palavras-chave na criação de lotes sejam feitas no idioma original (ex: *"Sunflowers"*, *"Jar"*, *"Van Gogh"*).
+2.  **Estados de Carregamento Unificados:** Em determinados cenários de navegação, optou-se por componentes de carregamento (*spinners*) unificados para seções inteiras em vez de seletores granulados por elemento.
+3.  **Tipagem Defensiva com Strings Vazias:** Uso pontual de *strings* vazias (`""`) na inicialização de estados e formulários no lugar de tratamentos mais estritos com `null` ou `undefined`.
+4.  **Semântica HTML Reduzida:** Estruturação visual focada em velocidade de entrega, resultando no uso de tags menos semânticas (`div` e `span`) em certos componentes de layout.
 
 #### Como rodar a aplicação localmente
 
