@@ -7,8 +7,11 @@ import { usePathname } from "next/navigation";
 import { ThemeButton } from "./ThemeButton";
 import { useAuth } from "@/contexts/authContext";
 import { logoutAction } from "@/actions/auth";
+import { useQueryClient } from "@tanstack/react-query";
 
 export function Header() {
+  const queryClient = useQueryClient()
+
   const pathName = usePathname()
 
   const auth = useAuth()
@@ -20,6 +23,11 @@ export function Header() {
   }
 
   const user = auth.user
+
+  const handleLogout = async () => {
+    queryClient.clear()
+    await logoutAction()
+  }
 
   return (
     <div className="flex flex-col md:flex-row border-b border-border/40 justify-between md:items-center mb-4 px-4 md:px-10 py-6 gap-2">
@@ -37,7 +45,7 @@ export function Header() {
                 <span className='font-bold'>Olá, {user?.name}</span>
               </Link>
 
-              <Button onClick={logoutAction} className='ml-4'>
+              <Button onClick={handleLogout} className='ml-4'>
                 Sair
               </Button>
             </div>

@@ -19,7 +19,7 @@ export default function useMakeBid() {
   const { mutate, isPending, error } = useMutation({
     mutationFn: (data: BidFormData) => makeBidAction(id, data.amount),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['wallet-values'] })
+      queryClient.invalidateQueries({ queryKey: ['wallet-values', 'live-lot'] })
     }
   })
 
