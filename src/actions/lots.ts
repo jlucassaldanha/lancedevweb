@@ -5,75 +5,91 @@ import { CancelLotResponse, CreateLot, CreateLotResponse, LiveLot, LotReceipt, M
 
 export async function listPublicLotsActions() {
   try {
-    return await apiFetch<PublicLot[]>('/lots')
+    const response = await apiFetch<PublicLot[]>('/lots')
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro tentando listar Lotes:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 
 export async function getPublicLotByIdActions(id: string) {
   try {
-    return await apiFetch<PublicLot>(`/lots/${id}`)
+    const response = await apiFetch<PublicLot>(`/lots/${id}`)
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro tentando buscar Lote:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 
 export async function getReceiptByIdAction(id: string) {
   try {
-    return await apiFetch<LotReceipt>(`/lots/${id}/receipt`)
+    const response = await apiFetch<LotReceipt>(`/lots/${id}/receipt`)
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro tentando listar Lotes:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 
 export async function getLiveRoomStatusByIdAction(id: string) {
   try {
-    return await apiFetch<LiveLot>(`/lots/${id}/live-room`)
+    const response = await apiFetch<LiveLot>(`/lots/${id}/live-room`)
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro ao obter dados da sessão ao vivo:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 
 export async function listMyWinningsAction() {
   try {
-    return await apiFetch<MyWinning[]>('/lots/my-winnings')
+    const response = await apiFetch<MyWinning[]>('/lots/my-winnings')
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro ao obter lista de arremates:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 
 export async function listMyLiveLotsAction() {
   try {
-    return await apiFetch<PublicLot[]>('/lots/my-live-lots')
+    const response = await apiFetch<PublicLot[]>('/lots/my-live-lots')
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro ao obter lista de lotes ao vivo do usuário:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 
 export async function listMyPublishedLotsAction() {
   try {
-    return await apiFetch<PublicLot[]>('/lots/my-lots')
+    const response = await apiFetch<PublicLot[]>('/lots/my-lots')
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro ao obter lista de lotes publicados do usuário:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 
 export async function cancelLotAction(id: string) {
   try {
-    return await apiFetch<CancelLotResponse>(`/lots/${id}`, {
+    const response = await apiFetch<CancelLotResponse>(`/lots/${id}`, {
       method: 'PATCH'
     })
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro ao tentar fazer deposito:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }
 
@@ -85,12 +101,14 @@ export async function createLotAction(data: CreateLot) {
   }
 
   try {
-    return await apiFetch<CreateLotResponse>('/lots', {
+    const response = await apiFetch<CreateLotResponse>('/lots', {
       method: 'POST',
       body: JSON.stringify(payload)
     })
+
+    return { success: true, data: response }
   } catch (error) {
-    console.error('Erro ao tentar criar lote:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }

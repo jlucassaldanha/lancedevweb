@@ -10,12 +10,28 @@ export function useAudit() {
 
   const { data: auditData, isPending: isAuditPending, error: auditError } = useQuery<AuditInfo>({
     queryKey: ['audit-lot', id],
-    queryFn: async () => await getLotAuditInfoAction(id)
+    queryFn: async () => {
+      const response = await getLotAuditInfoAction(id)
+
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    }
   })
 
   const { data: lotData, isPending: isLotDataPending, error: lotDataError } = useQuery<PublicLot>({
     queryKey: ['lot-data', id],
-    queryFn: async () => await getPublicLotByIdActions(id)
+    queryFn: async () => {
+      const response = await getPublicLotByIdActions(id)
+
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    }
   })
 
   const isPending = isAuditPending || isLotDataPending

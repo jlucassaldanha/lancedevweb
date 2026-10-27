@@ -5,12 +5,14 @@ import { MakeBid } from "@/types/bid"
 
 export async function makeBidAction(id: string, amount: number) {
   try {
-    return await apiFetch<MakeBid>(`/lots/${id}/bids`, {
+    const response = await apiFetch<MakeBid>(`/lots/${id}/bids`, {
       method: 'POST',
       body: JSON.stringify({ amount })
     })
+
+    return { success: true, data: response };
   } catch (error) {
-    console.error('Erro ao tentar fazer lance:', error)
-    throw error
+    const message = error instanceof Error ? error.message : 'Erro na requisição';
+    return { success: false, message };
   }
 }

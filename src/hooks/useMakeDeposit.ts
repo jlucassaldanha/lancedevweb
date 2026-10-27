@@ -14,7 +14,15 @@ export default function useMakeDeposit() {
   const queryClient = useQueryClient()
   
     const { mutate, isPending, error } = useMutation({
-      mutationFn: (data: DepositFormData) => makeDepositAction(data.amount),
+      mutationFn: async (data: DepositFormData) => {
+        const response = await makeDepositAction(data.amount)
+
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+      },
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['wallet-values'] })
       }

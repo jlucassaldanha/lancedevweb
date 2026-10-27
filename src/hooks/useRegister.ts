@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import z from 'zod';
 
 const formSchema = z.object({
@@ -24,6 +25,9 @@ export default function useRegister() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['register'] })
       router.push('/login')
+    },
+    onError: (error) => {
+      toast.error("Erro ao registrar.", { description: error.message || "Erro ao tentar registrar."})
     }
   })
 

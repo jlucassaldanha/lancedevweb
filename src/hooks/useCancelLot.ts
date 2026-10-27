@@ -5,7 +5,15 @@ export default function useCancelLot() {
   const queryClient = useQueryClient()
   
   const { mutate, isPending, error } = useMutation({
-    mutationFn: (id: string) => cancelLotAction(id),
+    mutationFn: async (id: string) => {
+      const response = await cancelLotAction(id)
+      
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['my-published-lots'] })
     }

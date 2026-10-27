@@ -17,7 +17,15 @@ export default function useMakeBid() {
   const queryClient = useQueryClient()
 
   const { mutate, isPending, error } = useMutation({
-    mutationFn: (data: BidFormData) => makeBidAction(id, data.amount),
+    mutationFn: async (data: BidFormData) => {
+      const response = await makeBidAction(id, data.amount)
+
+      if (!response.data) {
+        throw new Error(response.message)
+      }
+
+      return response.data
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['wallet-values', 'live-lot'] })
     }
