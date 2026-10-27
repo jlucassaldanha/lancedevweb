@@ -1,11 +1,11 @@
-import { Control, Controller, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
+import {  Controller } from 'react-hook-form';
 import { Field, FieldError } from '../ui/field';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 import { AlertCircleIcon } from 'lucide-react';
-import useMakeBid, { BidFormData } from '@/hooks/useMakeBid';
+import useMakeBid from '@/hooks/useMakeBid';
 
 interface MakeBidFormProps {
   avaliableBalance: string

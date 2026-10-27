@@ -29,6 +29,8 @@ export default function LivePage() {
 
   const isPagePending = isLivePending || isWalletPending
 
+  const indexOfUserLatestBid = liveData?.bidsHistory.findIndex(bid => bid.isUserBid)
+
   if (isPagePending) return (
     <div className="flex w-full h-screen justify-center items-center p-10">
       <Spinner className="size-15 text-primary" />
@@ -77,6 +79,7 @@ export default function LivePage() {
               <BidCard 
                 bid={bid}
                 position={i+1}
+                isUserLatestBid={i === indexOfUserLatestBid}
               />
               <Separator />
             </div>

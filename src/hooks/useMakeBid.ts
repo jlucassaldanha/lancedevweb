@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';;
 import z from 'zod';
 
 const formSchema = z.object({
-  amount: z.number().min(1, 'Você deve escolher um valor maior que zero para o lance'),
+  amount: z.number('Você deve digitar um valor no campo').min(1, 'Você deve escolher um valor maior que zero para o lance'),
 })
 
 export type BidFormData = z.infer<typeof formSchema>
@@ -19,7 +19,7 @@ export default function useMakeBid() {
   const { mutate, isPending, error } = useMutation({
     mutationFn: (data: BidFormData) => makeBidAction(id, data.amount),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['make-bid'] })
+      queryClient.invalidateQueries({ queryKey: ['wallet-values', 'live-lot'] })
     }
   })
 

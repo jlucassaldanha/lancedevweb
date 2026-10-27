@@ -3,6 +3,7 @@
 import { CarouselLotCard } from "@/components/my-components/CarouselLotCard";
 import { ErrorCard } from "@/components/my-components/ErrorCard";
 import { MainLotCard } from "@/components/my-components/MainLotCard";
+import { MainPageSection } from '@/components/my-components/MainPageSection';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
@@ -44,108 +45,24 @@ export default function Home() {
           </TabsList>
 
           <TabsContent value="LIVE">
-            <div className="w-full flex flex-col gap-5">
-              {liveLots.length > 0 ? (
-                <MainLotCard lot={liveLots[0]} />
-              ) : (
-                <span>Não há lotes publicados Ao vivo nesse momento</span>
-              )}
-
-              {liveLots.length > 1 && (
-                <div>
-                  <Separator className="my-10"/>
-
-                  <div className='w-full flex justify-end'>
-                    <Link href="/lotes/live" className="flex gap-2 mb-5">
-                      Ver mais Lotes
-                      <ArrowRightIcon />
-                    </Link>
-                  </div>
-
-                  <Carousel opts={{ align: "start" }} className='w-full px-10'>
-                    <CarouselContent className='-ml-6'>
-                      {liveLots.slice(1).map((lot) => (
-                        <CarouselItem key={lot.id} className="pl-6 md:basis-1/2 lg:basis-1/3 flex">
-                          <CarouselLotCard lot={lot}/>
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                  </Carousel>
-                </div>
-              )}
-            </div>
+            <MainPageSection 
+              lotList={liveLots} 
+              placeholder='Não há lotes publicados Ao vivo nesse momento'
+            />
           </TabsContent>
 
           <TabsContent value="SCHEDULED">
-            <div className="w-full flex flex-col gap-5">
-              {scheduledLots.length > 0 ? (
-                <MainLotCard lot={scheduledLots[0]} />
-              ) : (
-                <span>Não há lotes programados</span>
-              )}
-
-              {scheduledLots.length > 1 && (
-                <div>
-                  <Separator className="my-10"/>
-
-                  <div className='w-full flex justify-end'>
-                    <Link href="/lotes/programados" className="flex gap-2 mb-5">
-                      Ver mais Lotes
-                      <ArrowRightIcon />
-                    </Link>
-                  </div>
-
-                  <Carousel opts={{ align: "start" }} >
-                    <CarouselContent>
-                      {scheduledLots.slice(1).map((lot) => (
-                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3">
-                          <CarouselLotCard lot={lot}/>
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                  </Carousel>
-                </div>
-              )}
-            </div>
+            <MainPageSection 
+              lotList={scheduledLots} 
+              placeholder='Não há lotes programados'
+            />
           </TabsContent>
 
           <TabsContent value="FINISHED">
-            <div className="w-full flex flex-col gap-5">
-              {finishedLots.length > 0 ? (
-                <MainLotCard lot={finishedLots[0]} />
-              ) : (
-                <span>Não há lotes finalizados</span>
-              )}
-
-              {finishedLots.length > 1 && (
-                <div>
-                  <Separator className="my-10"/>
-
-                  <div className='w-full flex justify-end'>
-                    <Link href="/lotes/finalizados" className="flex gap-2 mb-5">
-                      Ver mais Lotes
-                      <ArrowRightIcon />
-                    </Link>
-                  </div>
-                  
-                  <Carousel opts={{ align: "start" }} >
-                    <CarouselContent>
-                      {finishedLots.slice(1).map((lot) => (
-                        <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3">
-                          <CarouselLotCard lot={lot}/>
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                  </Carousel>
-                </div>
-              )}
-            </div>
+            <MainPageSection 
+              lotList={finishedLots} 
+              placeholder='Não há lotes finalizados'
+            />
           </TabsContent>
         </Tabs>
       </div>

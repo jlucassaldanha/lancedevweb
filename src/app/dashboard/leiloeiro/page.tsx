@@ -1,5 +1,6 @@
 "use client"
 
+import { BalanceComponent } from '@/components/my-components/BalanceComponent'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
 import { LeiloeiroLotCard } from '@/components/my-components/LeiloeiroLotCard'
 import { buttonVariants } from '@/components/ui/button'
@@ -48,10 +49,7 @@ export default function DashboardPage() {
       )}
 
       <div className='w-full flex flex-col md:flex-row gap-5 justify-between md:items-end mt-10'>
-        <div className='flex flex-col font-bold'>
-          <span>Saldo atual</span>
-          <span className='font-serif text-primary text-2xl'>R$ {Number(walletValues?.availableBalance).toFixed(2)}</span>
-        </div>
+        <BalanceComponent availableBalance={walletValues?.availableBalance}/>
         <Link href={'/lotes/publicar'} className={buttonVariants()}>Publicar novo Lote</Link>
       </div>
 
@@ -73,19 +71,24 @@ export default function DashboardPage() {
           </Link>
         </div>
         
-        <div>
-          <Carousel opts={{ align: "start" }} >
-            <CarouselContent>
-              {lots.map((lot) => (
-                <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
-                  <LeiloeiroLotCard lot={lot}/>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
+        {lots.length === 0 ? (
+          <span>Você não possui lotes publicados</span>
+        ) : (
+          <div>
+            <Carousel opts={{ align: "start" }} >
+              <CarouselContent>
+                {lots.map((lot) => (
+                  <CarouselItem key={lot.id} className="md:basis-1/2 lg:basis-1/3 flex">
+                    <LeiloeiroLotCard lot={lot}/>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        )}
+        
       </div>
 
     </div>
