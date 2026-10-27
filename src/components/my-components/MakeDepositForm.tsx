@@ -1,6 +1,5 @@
-import { Control, Controller, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { Field, FieldError } from '../ui/field';
-import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
@@ -8,7 +7,7 @@ import { AlertCircleIcon } from 'lucide-react';
 import useMakeDeposit from '@/hooks/useMakeDeposit';
 
 export function MakeDepositForm() {
-  const { control, isPending, error, handleSubmit, onSubmit, register } = useMakeDeposit()
+  const { control, isPending, error, handleSubmit, onSubmit } = useMakeDeposit()
 
   return(
     <div className="flex flex-col gap-2 mt-5">
@@ -24,7 +23,11 @@ export function MakeDepositForm() {
                     {...field}
                     id="amount" 
                     aria-invalid={fieldState.invalid}
-                    {...register("amount", { valueAsNumber: true })} 
+                    value={field.value ?? ''}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      field.onChange(val === '' ? undefined : Number(val));
+                    }} 
                     placeholder='Valor do deposito'
                     type='number'
                   />
