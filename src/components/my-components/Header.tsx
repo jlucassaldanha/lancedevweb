@@ -29,30 +29,33 @@ export function Header() {
         </div>
       </Link>
 
-      <div className="flex gap-2">
-        {user ? (
-          <div className='flex justify-center items-center'>
-            <Link href={accountLink}>
-              <span className='font-bold'>Olá, {user?.name}</span>
-            </Link>
+      <div className="flex gap-2 w-full justify-end">
+        <div className="flex gap-2 items-center justify-center">
+          {user ? (
+            <div className='flex justify-center items-center'>
+              <Link href={accountLink}>
+                <span className='font-bold'>Olá, {user?.name}</span>
+              </Link>
 
-            <Button onClick={logoutAction} className='ml-4'>
-              Sair
-            </Button>
-          </div>
-        ) : (
-          <div className="flex gap-2"> 
-            <Link href={'/login'} className={buttonVariants()}>
-              Entrar
-            </Link>
+              <Button onClick={logoutAction} className='ml-4'>
+                Sair
+              </Button>
+            </div>
+          ) : (
+            <div className="flex gap-2"> 
+              <Link href={'/login'} className={buttonVariants()}>
+                Entrar
+              </Link>
 
-            <Link href={'/register'} className={buttonVariants({ variant: 'secondary' })}>
-              Criar Conta
-            </Link>
-          </div>
-        )}
+              <Link href={'/register'} className={buttonVariants({ variant: 'secondary' })}>
+                Criar Conta
+              </Link>
+            </div>
+          )}
 
-        <ThemeButton />
+          <ThemeButton />
+        </div>
+        
       </div>
     </div>
   )
