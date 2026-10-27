@@ -32,19 +32,19 @@ export default function PublicarLotesPage() {
 
   const [selectedArt, setSelectedArt] = useState<MetObj | null>(null);
 
+  
+
+  const { control: createControl, handleSubmit: handleCreateSubmit, setValue, onSubmit: onCreateSubmit, formErrors, isPending, isSuccess, error: createError } = useCreateLot()
+
   const handleSelectArt = (art: MetObj) => {
     setSelectedArt(art)
 
-    setValue('externalItemId', art.objectID.toString());
-    setValue('title', art.title);
-    setValue('imageUrl', art.primaryImageSmall);
+    setValue('externalItemId', art.objectID.toString(), { shouldValidate: true });
 
     clearSearch()
 
     createLotSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-
-  const { control: createControl, handleSubmit: handleCreateSubmit, setValue, watch, onSubmit: onCreateSubmit, formErrors, isPending, isSuccess, error: createError } = useCreateLot()
 
   const createLotSectionRef = useRef<HTMLElement>(null)
 
@@ -194,15 +194,15 @@ export default function PublicarLotesPage() {
             />
           </div>
 
-          {formErrors.externalItemId && (
+          {createError?.message && (
             <div className='w-full m-5'>
-              <ErrorCard message="Você precisa pesquisar e escolher uma arte na lista acima antes de publicar o lote." title="Erro"/>
+              <ErrorCard message={createError.message} title="Erro"/>
             </div>
           )}
 
           <Button 
             type="submit" 
-            disabled={isPending || !watch('externalItemId')} 
+            disabled={isPending} 
             className="w-full mt-6 bg-primary text-primary-foreground"
           >
             {isPending ? "Publicando Lote..." : "Publicar Lote"}
@@ -211,8 +211,8 @@ export default function PublicarLotesPage() {
         </form>
 
         {isSuccess && (
-          <div>
-            <span>Lote Criado!</span>
+          <div className="mt-4 p-4 bg-green-100 text-green-700 rounded-md font-bold text-center border border-green-200">
+            Lote Criado com Sucesso!
           </div>
         )}
       </section>

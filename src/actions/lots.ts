@@ -77,11 +77,19 @@ export async function cancelLotAction(id: string) {
   }
 }
 
-export async function createLotAction(data: CreateLot) {
+export async function createLotAction(data: CreateLot) { 
+  const payload = {
+    ...data,
+    startTime: new Date(data.startTime).toISOString(),
+    endTime: new Date(data.endTime).toISOString()
+  }
+
+  console.log(payload)
+
   try {
     return await apiFetch<CreateLotResponse>('/lots', {
       method: 'POST',
-      body: JSON.stringify({ data })
+      body: JSON.stringify({ payload })
     })
   } catch (error) {
     console.error('Erro ao tentar criar lote:', error)

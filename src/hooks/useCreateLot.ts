@@ -6,8 +6,6 @@ import z from 'zod';
 
 const createLotSchema = z.object({
   externalItemId: z.string().min(1, "Obrigatório"),
-  title: z.string().min(1, "Obrigatório"),
-  imageUrl: z.string().min(1, "Obrigatório"),
   startingBid: z.number().min(1, "O lance inicial deve ser maior que zero"),
   minimumIncrement: z.number().min(1, "O incremento mínimo deve ser maior que zero"),
   startTime: z.string().min(1, "Data de início obrigatória"),
@@ -23,8 +21,8 @@ export default function useCreateLot() {
     resolver: zodResolver(createLotSchema),
     defaultValues: {
       externalItemId: '',
-      title: '',
-      imageUrl: '',
+      startTime: '',
+      endTime: '',
     }
   });
 
