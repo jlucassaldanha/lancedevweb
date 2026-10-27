@@ -32,14 +32,12 @@ export default function PublicarLotesPage() {
 
   const [selectedArt, setSelectedArt] = useState<MetObj | null>(null);
 
-  
-
   const { control: createControl, handleSubmit: handleCreateSubmit, setValue, onSubmit: onCreateSubmit, formErrors, isPending, isSuccess, error: createError } = useCreateLot()
 
   const handleSelectArt = (art: MetObj) => {
     setSelectedArt(art)
 
-    setValue('externalItemId', art.objectID.toString(), { shouldValidate: true });
+    setValue('externalItemId', String(art.objectID), { shouldValidate: true });
 
     clearSearch()
 
@@ -128,10 +126,10 @@ export default function PublicarLotesPage() {
               control={createControl}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <Label htmlFor="initialBid">Lance Inicial (R$)</Label>
+                  <Label htmlFor="startingBid">Lance Inicial (R$)</Label>
                   <Input
                     {...field}
-                    id="initialBid"
+                    id="startingBid"
                     type="number"
                     aria-invalid={fieldState.invalid}
                     onChange={(e) => field.onChange(e.target.valueAsNumber)}
@@ -164,10 +162,10 @@ export default function PublicarLotesPage() {
               control={createControl}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <Label htmlFor="startDate">Data de Início</Label>
+                  <Label htmlFor="startTime">Data de Início</Label>
                   <Input
                     {...field}
-                    id="startDate"
+                    id="startTime"
                     type="datetime-local"
                     aria-invalid={fieldState.invalid}
                   />
@@ -181,10 +179,10 @@ export default function PublicarLotesPage() {
               control={createControl}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <Label htmlFor="endDate">Data de Encerramento</Label>
+                  <Label htmlFor="endTime">Data de Encerramento</Label>
                   <Input
                     {...field}
-                    id="endDate"
+                    id="endTime"
                     type="datetime-local"
                     aria-invalid={fieldState.invalid}
                   />
