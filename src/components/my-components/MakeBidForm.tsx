@@ -12,7 +12,7 @@ interface MakeBidFormProps {
 }
 
 export function MakeBidForm({ avaliableBalance }: MakeBidFormProps) {
-  const { control, isPending, error, handleSubmit, onSubmit, register } = useMakeBid()
+  const { control, isPending, error, handleSubmit, onSubmit } = useMakeBid()
 
   return(
     <div className="flex flex-col gap-2">
@@ -30,7 +30,11 @@ export function MakeBidForm({ avaliableBalance }: MakeBidFormProps) {
                     {...field}
                     id="amount" 
                     aria-invalid={fieldState.invalid}
-                    {...register("amount", { valueAsNumber: true })} 
+                    value={field.value ?? ''}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      field.onChange(val === '' ? undefined : Number(val));
+                    }} 
                     placeholder='Valor do lance'
                     type='number'
                   />

@@ -21,7 +21,10 @@ export default function useMakeDeposit() {
     })
   
     const { register, handleSubmit, control, reset } = useForm<DepositFormData>({
-      resolver: zodResolver(formSchema)
+      resolver: zodResolver(formSchema),
+      defaultValues: {
+        amount: 0
+      }
     })
   
   
