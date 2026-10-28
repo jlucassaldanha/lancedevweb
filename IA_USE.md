@@ -17,4 +17,4 @@ A inteligência artificial (especificamente os modelos Gemini) foi utilizada nas
 
 Para focar na resolução do problema de negócio (lances, leilões, salas ao vivo) dentro do prazo, optei por reaproveitar código de projetos autorais antigos:
 
-*   **Base do Projeto (ticketdev):** Grande parte da infraestrutura do front-end, incluindo arquivos utilitários (utils), lógicas genéricas de formatação e os escopos dos *Providers* (React Query e Next Themes), foi importada do meu repositório pessoal de um projeto anterior chamado *ticketdev*. Isso me permitiu ganhar agilidade sem comprometer a qualidade estrutural da aplicação.
+*   **Base do Projeto ([ticketdev](https://github.com/jlucassaldanha/ticketdevweb)):** Grande parte da infraestrutura do front-end, incluindo arquivos utilitários (utils), lógicas genéricas de formatação e os escopos dos *Providers* (React Query e Next Themes), foi importada do meu repositório pessoal de um projeto anterior chamado *ticketdev*. Isso me permitiu ganhar agilidade sem comprometer a qualidade estrutural da aplicação.
