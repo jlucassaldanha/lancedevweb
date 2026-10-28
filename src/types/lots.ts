@@ -7,6 +7,8 @@ export interface PublicLot {
   externalItemId: string
   title: string
   imageUrl: string
+  artDate: string
+  artistDisplayName: string
   startingBid: string
   minimumIncrement: string
   startTime: string
@@ -24,6 +26,8 @@ export interface SimpleLot {
   id: string
   title: string
   imageUrl: string
+  artDate: string
+  artistDisplayName: string
   startingBid: string
   minimumIncrement: string
   startTime: string
@@ -35,6 +39,8 @@ export interface LotReceipt {
   lotId: string
   title: string
   imageUrl: string
+  artDate: string
+  artistDisplayName: string
   amount?: string,
   closedAt: string,
   winnerName?: string
@@ -83,8 +89,8 @@ export interface CancelLotResponse {
 
 export interface CreateLot {
   externalItemId: string
-  startingBid: Number
-  minimumIncrement: Number
+  startingBid: number
+  minimumIncrement: number
   startTime: string
   endTime: string
 }

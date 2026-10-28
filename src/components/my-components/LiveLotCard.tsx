@@ -48,8 +48,17 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
               </AlertDescription>}
             </Alert>
           </div>
-
-          {liveLot?.lot.status === 'LIVE' && <CountdownTimer endTime={liveLot?.lot.endTime || ""}/>}
+          
+          <div className='flex gap-5 justify-between'>
+            {liveLot?.lot.status === 'LIVE' && <CountdownTimer endTime={liveLot?.lot.endTime || ""}/>}    
+            <div className='flex flex-col md:flex-row gap-10 items-center'>
+              <div className="flex flex-col gap-2"> 
+                <span>Artista</span>
+                <span className="text-xl font-serif text-secondary">{liveLot?.lot.artistDisplayName}</span>
+              </div>
+            </div>
+          </div>
+          
 
           <div className="flex gap-10 items-center">
             {liveLot?.currentLeader ? (

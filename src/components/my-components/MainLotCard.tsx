@@ -31,7 +31,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
         <h3 className="text-4xl font-serif text-secondary">{lot.title}</h3>
         <Separator />
         <div className="flex flex-col justify-between h-full gap-3">
-          <div className="flex gap-10 items-center">
+          <div className="flex gap-10 items-center justify-between">
             <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : "secondary"}>
               <BubbleContent >
                 {status}
@@ -45,6 +45,13 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
                 </BubbleContent>
               </Bubble>
             )}
+
+            <div className='flex flex-col md:flex-row gap-10 items-center'>
+              <div className="flex flex-col gap-2"> 
+                <span>Artista</span>
+                <span className="text-xl font-serif text-secondary">{lot.artistDisplayName}</span>
+              </div>
+            </div>
           </div>
 
           {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}

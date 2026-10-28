@@ -34,11 +34,6 @@ export function MetArtCard({ art, onSelectArt, isSearch }: MetArtCardProps) {
               <span>Artista</span>
               <span className="font-serif">{art.artistDisplayName}</span>
             </div>
-
-            <div className="flex flex-col gap-2"> 
-              <span>Data</span>
-              <span className="font-serif">{art.objectDate || "Desconhecido"}</span>
-            </div>
           </div>
         </div>
 
