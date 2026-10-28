@@ -42,6 +42,7 @@ export default function Home() {
             <MainPageSection 
               lotList={liveLots} 
               placeholder='Não há lotes publicados Ao vivo nesse momento'
+              href='/lotes/live'
             />
           </TabsContent>
 
@@ -49,6 +50,7 @@ export default function Home() {
             <MainPageSection 
               lotList={scheduledLots} 
               placeholder='Não há lotes programados'
+              href='/lotes/programados'
             />
           </TabsContent>
 
@@ -56,6 +58,7 @@ export default function Home() {
             <MainPageSection 
               lotList={finishedLots} 
               placeholder='Não há lotes finalizados'
+              href='/lotes/finalizados'
             />
           </TabsContent>
         </Tabs>
