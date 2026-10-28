@@ -35,6 +35,12 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
 
         {comprovante ? (
           <div className="flex flex-col gap-10 items-center">
+            <div className='flex flex-col md:flex-row gap-10 items-center'>
+              <div className="flex flex-col gap-2"> 
+                <span>Artista</span>
+                <span className="text-xl font-serif text-secondary">{lotData?.artistDisplayName || "Desconhecido"}</span>
+              </div>
+            </div>
             {receiptData?.message ? (
               <div className="w-full flex flex-col gap-5">
                 <div className="w-full font-bold text-primary">
