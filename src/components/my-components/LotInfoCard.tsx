@@ -102,7 +102,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
                     <dt className="font-bold">Efeito Corrente:</dt>
                     <dd>Cada lance registrado gera uma assinatura digital única que depende diretamente do lance anterior. É como um elo de uma corrente ou um jogo de dominó matemático.</dd>
                     <dt className="font-bold">Impossível de Mudar:</dt>
-                    <dd>Se alguém tentar alterar malandramente o valor de um lance antigo direto no sistema, essa assinatura quebra na mesma hora. Como o lance seguinte depende do anterior, todo o histórico desmorona e o sistema aponta a fraude instantaneamente.</dd>
+                    <dd>Se alguém tentar alterar o valor de um lance antigo direto no sistema, essa assinatura quebra na mesma hora. Como o lance seguinte depende do anterior, todo o histórico desmorona e o sistema aponta a fraude instantaneamente.</dd>
                   </dl>
                 </div>
               </div>
