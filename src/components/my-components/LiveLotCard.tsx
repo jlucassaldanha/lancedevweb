@@ -55,18 +55,18 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
             {liveLot?.currentLeader ? (
               <div className="flex flex-col gap-2"> 
                 <span>Maior Lance</span>
-                <span className="text-2xl font-serif text-primary">R$ {Number(liveLot.currentLeader.amount).toFixed(2)}</span>
+                <span className="text-2xl font-serif text-primary">R$ {Number(liveLot.currentLeader.amount).toFixed(2).replace('.', ',')}</span>
               </div>
             ) : (
               <div className="flex flex-col gap-2"> 
                 <span>Lance Inicial</span>
-                <span className="text-3xl font-serif text-primary">R$ {Number(liveLot?.lot.startingBid).toFixed(2)}</span>
+                <span className="text-3xl font-serif text-primary">R$ {Number(liveLot?.lot.startingBid).toFixed(2).replace('.', ',')}</span>
               </div>
             )}
 
             <div className="flex flex-col gap-2"> 
               <span>Incremento minimo</span>
-              <span className=" text-xl font-serif">R$ {Number(liveLot?.lot.minimumIncrement).toFixed(2)}</span>
+              <span className=" text-xl font-serif">R$ {Number(liveLot?.lot.minimumIncrement).toFixed(2).replace('.', ',')}</span>
             </div>
           </div>
         </div>

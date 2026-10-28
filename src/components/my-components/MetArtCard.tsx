@@ -22,7 +22,7 @@ export function MetArtCard({ art, onSelectArt, isSearch }: MetArtCardProps) {
           />
         </div>
         
-        <h3 className="text-2xl font-serif line-clamp-2 min-h-14 flex items-center">{art.title}</h3>
+        <h3 className="text-2xl font-serif line-clamp-2 min-h-14 flex items-center text-secondary">{art.title}</h3>
         <Separator />
       </div>
       

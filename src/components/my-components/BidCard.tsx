@@ -9,7 +9,7 @@ export function BidCard({ bid, position, isUserLatestBid }: { bid: BidsHistory, 
             <h4 className="text-2xl font-bold text-secondary font-serif">#{position} • {bid.bidderName}</h4>
             <h4 className="text-primary font-extrabold text-2xl"> {isUserLatestBid && " Você está aqui!"}</h4>
           </div>
-          <span className="text-2xl font-serif">R$ {Number(bid.amount).toFixed(2)}</span>
+          <span className="text-2xl font-serif">R$ {Number(bid.amount).toFixed(2).replace('.', ',')}</span>
         </div>
       </div>
     </div>

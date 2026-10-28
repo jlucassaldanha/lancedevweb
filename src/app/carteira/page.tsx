@@ -45,17 +45,17 @@ export default function CarteiraPage() {
       <div className='w-full flex flex-col md:flex-row gap-5 mt-10'>
         <div className='flex flex-col font-bold'>
           <span>Saldo Total atual</span>
-          <span className='font-serif text-primary'>R$ {Number(walletValues?.totalBalance).toFixed(2)}</span>
+          <span className='font-serif text-primary'>R$ {Number(walletValues?.totalBalance).toFixed(2).replace('.', ',')}</span>
         </div>
 
         <div className='flex flex-col font-bold'>
           <span>Saldo Comprometido atual</span>
-          <span className='font-serif text-primary'>R$ {Number(walletValues?.committedBalance).toFixed(2)}</span>
+          <span className='font-serif text-primary'>R$ {Number(walletValues?.committedBalance).toFixed(2).replace('.', ',')}</span>
         </div>
 
         <div className='flex flex-col font-bold'>
           <span>Saldo Livre atual</span>
-          <span className='font-serif text-primary'>R$ {Number(walletValues?.availableBalance).toFixed(2)}</span>
+          <span className='font-serif text-primary'>R$ {Number(walletValues?.availableBalance).toFixed(2).replace('.', ',')}</span>
         </div>
       </div>
 

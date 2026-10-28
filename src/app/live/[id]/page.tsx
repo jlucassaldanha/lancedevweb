@@ -61,7 +61,7 @@ export default function LivePage() {
 
       {!liveData?.userStatus.isWinning && liveData?.lot.status === 'LIVE' && (
         <MakeBidForm 
-          avaliableBalance={Number(walletValues?.availableBalance).toFixed(2)}
+          avaliableBalance={Number(walletValues?.availableBalance).toFixed(2).replace('.', ',')}
         />
       )}
 
