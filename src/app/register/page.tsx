@@ -134,7 +134,7 @@ export default function RegisterPage() {
         </form>
         
         <CardFooter className='flex flex-col gap-2'>
-          <Button className='w-full' type='submit' form='register-form' disabled={isPending} >{!isPending ? 'Registrar' : 'Registrando..'}</Button>
+          <Button className='w-full' type='submit' form='register-form' disabled={isPending} >{!isPending ? 'Registrar' : 'Registrando...'}</Button>
           <div>
             Já possui uma conta?
             <Link className="text-accent font-bold" href={'login'}>{' '}Entrar</Link>

@@ -51,7 +51,7 @@ export default function IntegridadePage() {
 
       {(auditData?.totalBids ?? 0) > 0 && (
         <div className="mt-5 flex flex-col gap-5">
-          <h3 className="text-2xl font-extrabold">Lances</h3>
+          <h3 className="text-2xl font-extrabold text-secondary">Lances</h3>
           <Separator />
           
           {auditData?.auditDetails.map((audit, i) => (

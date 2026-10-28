@@ -78,7 +78,7 @@ export default function LoginPage() {
         </form>
         
         <CardFooter className='flex flex-col gap-2'>
-          <Button className='w-full' type='submit' form='login-form' disabled={isPending} >{!isPending ? 'Entrar' : 'Entrando..'}</Button>
+          <Button className='w-full' type='submit' form='login-form' disabled={isPending} >{!isPending ? 'Entrar' : 'Entrando...'}</Button>
           <div>
             Não possui uma conta?
             <Link className="text-accent font-bold" href={'register'}>{' '}Registrar</Link>
