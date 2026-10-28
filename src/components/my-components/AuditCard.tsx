@@ -27,7 +27,7 @@ export function AuditCard({ comprovante, audit, position }: AuditCardProps) {
               </div>
             </div>
           </div>
-          {!comprovante && <span className="text-2xl font-serif">R$ {Number(audit?.amount).toFixed(2).replace('.', ',')}</span>}
+          {!comprovante && <span className="text-2xl font-serif text-accent">R$ {Number(audit?.amount).toFixed(2).replace('.', ',')}</span>}
         </div>
         
         <Card className="w-full p-0 mt-2">

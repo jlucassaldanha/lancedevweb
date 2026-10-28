@@ -72,7 +72,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
 
             <div className="flex flex-col gap-2"> 
               <span>Incremento minimo</span>
-              <span className=" text-xl font-serif">R$ {Number(lot.minimumIncrement).toFixed(2).replace('.', ',')}</span>
+              <span className=" text-xl font-serif text-secondary">R$ {Number(lot.minimumIncrement).toFixed(2).replace('.', ',')}</span>
             </div>
           </div>
         </div>

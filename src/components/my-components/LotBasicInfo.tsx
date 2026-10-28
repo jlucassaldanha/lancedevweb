@@ -34,13 +34,13 @@ export function LotBasicInfo({ lot, status }: LotsBasicInfoProps) {
           ) : (
             <div className="flex flex-col gap-2"> 
               <span>Lance Inicial</span>
-              <span className="text-xl font-serif">R$ {Number(lot.startingBid).toFixed(2).replace('.', ',')}</span>
+              <span className="text-xl font-serif text-primary">R$ {Number(lot.startingBid).toFixed(2).replace('.', ',')}</span>
             </div>
           )}
 
         <div className="flex flex-col gap-2"> 
           <span>Incremento</span>
-          <span className="font-serif">R$ {Number(lot.minimumIncrement).toFixed(2).replace('.', ',')}</span>
+          <span className="font-serif text-primary">R$ {Number(lot.minimumIncrement).toFixed(2).replace('.', ',')}</span>
         </div>
       </div>
     </div>

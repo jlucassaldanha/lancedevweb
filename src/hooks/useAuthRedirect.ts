@@ -10,6 +10,6 @@ export default function useAuthRedirect(role: UserRole) {
   }
 
   if (auth.user?.role !== role) {
-    redirect('/')
+    redirect('/bad')
   }
 }
