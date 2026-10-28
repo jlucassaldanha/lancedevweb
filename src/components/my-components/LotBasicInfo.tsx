@@ -9,16 +9,16 @@ export function LotBasicInfo({ lot, status }: LotsBasicInfoProps) {
     <div className="flex flex-col justify-between h-full gap-2">
       {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}
       
-      <div className="flex gap-10 items-center">
+      <div className="flex gap-3 items-center">
         <Bubble variant={lot.status === 'FINISHED' ? "muted" : lot.status === 'LIVE' ? "default" : lot.status === 'CANCELLED' ? "destructive" : "secondary"}>
-          <BubbleContent >
+          <BubbleContent>
             {status}
           </BubbleContent>
         </Bubble>
 
         {(lot.bids.length > 0 && lot.status === 'FINISHED') && (
           <Bubble>
-            <BubbleContent >
+            <BubbleContent>
               Arrematado
             </BubbleContent>
           </Bubble>
