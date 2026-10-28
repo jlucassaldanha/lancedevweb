@@ -83,16 +83,28 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
         ) : (
           <div className="flex flex-col justify-between h-full">
             {(auditData?.totalBids ?? 0 ) > 0 ? (
-              <div className="flex flex-col gap-10 items-center">
+              <div className="flex flex-col gap-8 items-center">
                 <Alert className={auditData?.isIntegrityIntact ? "text-green-400" : "text-red-400"}>
                   {auditData?.isIntegrityIntact ? <CheckCircle2Icon /> : <AlertCircleIcon />}
                   <AlertTitle>
                     {auditData?.isIntegrityIntact ? 'O Lote encontra-se integro' : 'Lote fraudado'}
                   </AlertTitle> 
-                  <AlertDescription>
+                  <AlertDescription className={auditData?.isIntegrityIntact ? "text-green-400" : "text-red-400"}>
                     Confira os lances deste lote abaixo
                   </AlertDescription>
                 </Alert>
+                <div className="flex flex-col gap-3 text-sm">
+                  <h4 className="text-xl font-bold">Sobre a integridade</h4>
+                  <p>Para garantir que o leilão seja 100% honesto e transparente para todos os participantes, nosso sistema utiliza uma tecnologia de segurança avançada, semelhante à usada em Blockchain.</p>
+                  <p>Isso significa que nenhum lance pode ser alterado, apagado ou inserido escondido no sistema.</p>
+                  <h5 className="text-xl font-bold">Como isso protege você?</h5>
+                  <dl className="flex flex-col gap-2">
+                    <dt className="font-bold">Efeito Corrente:</dt>
+                    <dd>Cada lance registrado gera uma assinatura digital única que depende diretamente do lance anterior. É como um elo de uma corrente ou um jogo de dominó matemático.</dd>
+                    <dt className="font-bold">Impossível de Mudar:</dt>
+                    <dd>Se alguém tentar alterar malandramente o valor de um lance antigo direto no sistema, essa assinatura quebra na mesma hora. Como o lance seguinte depende do anterior, todo o histórico desmorona e o sistema aponta a fraude instantaneamente.</dd>
+                  </dl>
+                </div>
               </div>
             ) : (
               <div className="flex flex-col gap-10 items-center">
