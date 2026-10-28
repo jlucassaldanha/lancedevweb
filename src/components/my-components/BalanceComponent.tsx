@@ -2,7 +2,7 @@ export function BalanceComponent({ availableBalance }: { availableBalance?: stri
   return (
     <div className='flex flex-col font-bold'>
       <span>Saldo atual</span>
-      <span className='font-serif text-primary text-2xl'>R$ {Number(availableBalance).toFixed(2)}</span>
+      <span className='font-serif text-primary text-2xl'>R$ {Number(availableBalance).toFixed(2).replace('.', ',')}</span>
     </div>
   )
 }

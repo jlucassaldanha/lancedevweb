@@ -17,7 +17,7 @@ export function CarouselWinningCard({ winning }: { winning: MyWinning }) {
         <div className='flex justify-between'>
           <div className='flex flex-col gap-1'>
             <span>Valor</span>
-            <span className='font-serif text-primary'>{Number(winning.amount).toFixed(2)}</span>
+            <span className='font-serif text-primary'>{Number(winning.amount).toFixed(2).replace('.', ',')}</span>
           </div>
 
           <div className='flex flex-col gap-1'>

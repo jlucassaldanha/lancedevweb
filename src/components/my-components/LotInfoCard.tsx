@@ -30,7 +30,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
       </div>
 
       <div className="flex flex-col gap-5 md:w-2/4">
-        <h3 className="text-4xl font-serif">{title}</h3>
+        <h3 className="text-4xl font-serif text-secondary">{title}</h3>
         <Separator />
 
         {comprovante ? (
@@ -68,7 +68,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
                 <div className="flex justify-between">
                   <div className="flex flex-col gap-2"> 
                     <span>Lance Vencedor</span>
-                    <span className="text-2xl font-serif">R$ {Number(receiptData?.amount || 0).toFixed(2)}</span>
+                    <span className="text-2xl font-serif text-primary">R$ {Number(receiptData?.amount || 0).toFixed(2).replace('.', ',')}</span>
                   </div>
 
                   <div className="flex flex-col gap-2">

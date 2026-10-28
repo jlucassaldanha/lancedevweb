@@ -28,7 +28,7 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
       </div>
 
       <div className="flex flex-col gap-5 md:w-2/4">
-        <h3 className="text-4xl font-serif">{lot.title}</h3>
+        <h3 className="text-4xl font-serif text-secondary">{lot.title}</h3>
         <Separator />
         <div className="flex flex-col justify-between h-full gap-3">
           <div className="flex gap-10 items-center">
@@ -53,19 +53,19 @@ export function MainLotCard({ lot }: { lot: PublicLot }) {
             {lot._count.bids > 0 ? (
               <div className="flex flex-col gap-2"> 
                 <span>Maior Lance</span>
-                <span className="text-2xl font-serif">R$ {Number(lot.bids[0].amount).toFixed(2)}</span>
+                <span className="text-2xl font-serif text-secondary">R$ {Number(lot.bids[0].amount).toFixed(2).replace('.', ',')}</span>
               </div>
             ) : (
               <div className="flex flex-col gap-2"> 
                 <span>Lance Inicial</span>
-                <span className="text-3xl font-serif">R$ {Number(lot.startingBid).toFixed(2)}</span>
+                <span className="text-3xl font-serif text-secondary">R$ {Number(lot.startingBid).toFixed(2).replace('.', ',')}</span>
               </div>
             )}
             
 
             <div className="flex flex-col gap-2"> 
               <span>Incremento minimo</span>
-              <span className=" text-xl font-serif">R$ {Number(lot.minimumIncrement).toFixed(2)}</span>
+              <span className=" text-xl font-serif">R$ {Number(lot.minimumIncrement).toFixed(2).replace('.', ',')}</span>
             </div>
           </div>
         </div>
