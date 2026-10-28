@@ -1,5 +1,6 @@
 "use client"
 
+import { ArrowLeftLink } from '@/components/my-components/ArrowLeftLink';
 import { ErrorCard } from '@/components/my-components/ErrorCard';
 import { MetArtCard } from '@/components/my-components/MetArtCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -13,8 +14,6 @@ import useAuthRedirect from '@/hooks/useAuthRedirect';
 import useCreateLot from '@/hooks/useCreateLot';
 import useSearchMet from '@/hooks/useSearchMet';
 import { MetObj } from '@/types/met';
-import { ArrowLeftIcon } from 'lucide-react';
-import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { Controller } from 'react-hook-form';
 
@@ -57,16 +56,14 @@ export default function PublicarLotesPage() {
 
   return (
     <div className="flex flex-col px-10 mb-5">
-      <div>
-        <Link href="/dashboard/leiloeiro" className="flex gap-2 mb-5">
-          <ArrowLeftIcon />
-          Voltar ao Dashboard
-        </Link>
-      </div>
+      <ArrowLeftLink 
+        href='/dashboard/leiloeiro'
+        text='Voltar ao Dashboard'
+      />
       
-      <div className='text-4xl text-secondary font-bold w-full'>
+      <h2 className='text-4xl text-secondary font-bold w-full'>
         Publicar Novos Lotes
-      </div>
+      </h2>
 
       <div className='mt-10'>
         <form onSubmit={handleSearchSubmit(onSearchSubmit)} className='flex flex-col md:flex-row gap-5 items-end'>
@@ -119,7 +116,7 @@ export default function PublicarLotesPage() {
       >
         <Separator className="my-5"/>
         
-        <span className='text-3xl font-bold text-secondary'>Criar novo Lote</span>
+        <h3 className='text-3xl font-bold text-secondary'>Criar novo Lote</h3>
 
         {!selectedArt && (
           <div className='mt-5'> 

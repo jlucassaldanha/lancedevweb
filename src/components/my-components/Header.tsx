@@ -30,7 +30,7 @@ export function Header() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row border-b border-border/40 justify-between md:items-center mb-4 px-4 md:px-10 py-6 gap-2">
+    <header className="flex flex-col md:flex-row border-b border-border/40 justify-between md:items-center mb-4 px-4 md:px-10 py-6 gap-2">
       <Link href={'/'}>
         <div className='text-3xl'>
           <LogoLanceDev />
@@ -65,6 +65,6 @@ export function Header() {
         </div>
         
       </div>
-    </div>
+    </header>
   )
 }

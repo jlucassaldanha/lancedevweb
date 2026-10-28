@@ -1,13 +1,12 @@
 "use client"
 
+import { ArrowLeftLink } from "@/components/my-components/ArrowLeftLink";
 import { AuditCard } from "@/components/my-components/AuditCard";
 import { ErrorCard } from '@/components/my-components/ErrorCard';
 import { LotInfoCard } from "@/components/my-components/LotInfoCard";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
 import { useAudit } from "@/hooks/useAudit";
-import { ArrowLeftIcon } from "lucide-react";
-import Link from "next/link";
 
 export default function IntegridadePage() {
   const {
@@ -26,12 +25,10 @@ export default function IntegridadePage() {
   
   return (
     <div className="flex flex-col px-4 md:px-10 mb-5">
-      <div>
-        <Link href="/" className="flex gap-2 mb-5">
-          <ArrowLeftIcon />
-          Voltar aos Lotes
-        </Link>
-      </div>
+      <ArrowLeftLink 
+        href="/"
+        text="Voltar aos Lotes"
+      />
 
       {auditError?.message && (
         <div className='w-full m-5'>
@@ -54,7 +51,7 @@ export default function IntegridadePage() {
 
       {(auditData?.totalBids ?? 0) > 0 && (
         <div className="mt-5 flex flex-col gap-5">
-          <span className="text-2xl font-extrabold">Lances</span>
+          <h3 className="text-2xl font-extrabold">Lances</h3>
           <Separator />
           
           {auditData?.auditDetails.map((audit, i) => (

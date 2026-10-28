@@ -30,7 +30,6 @@ export function AuditCard({ comprovante, audit, position }: AuditCardProps) {
           {!comprovante && <span className="text-2xl font-serif">R$ {Number(audit?.amount).toFixed(2)}</span>}
         </div>
         
-
         <Card className="w-full p-0 mt-2">
           <Collapsible>
             <CollapsibleTrigger
@@ -56,12 +55,10 @@ export function AuditCard({ comprovante, audit, position }: AuditCardProps) {
                   <span > {audit?.calculatedHash}</span>
                 </div>
               </CardContent>
-              
             </CollapsibleContent>
           </Collapsible>  
         </Card>
       </div>
-      
     </div>
   )
 }

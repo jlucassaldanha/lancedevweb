@@ -1,13 +1,12 @@
 "use client"
 
+import { ArrowLeftLink } from '@/components/my-components/ArrowLeftLink'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
 import { MakeDepositForm } from '@/components/my-components/MakeDepositForm'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
 import useAuthRedirect from '@/hooks/useAuthRedirect'
 import useWalletValues from '@/hooks/useWalletValues'
-import { ArrowLeftIcon } from 'lucide-react'
-import Link from 'next/link'
 
 export default function CarteiraPage() {
   useAuthRedirect('LICITANTE')
@@ -28,16 +27,14 @@ export default function CarteiraPage() {
   
   return (
     <div className="flex flex-col px-10 mb-5">
-      <div>
-        <Link href="/dashboard/licitante" className="flex gap-2 mb-5">
-          <ArrowLeftIcon />
-          Voltar para o Dashboard
-        </Link>
-      </div>
+      <ArrowLeftLink 
+        href='/dashboard/licitante'
+        text='Voltar para o Dashboard'
+      />
 
-      <div className='text-4xl text-secondary font-bold w-full'>
+      <h2 className='text-4xl text-secondary font-bold w-full'>
         Carteira do Licitante
-      </div>
+      </h2>
       
       {walletError?.message && (
         <div className='w-full mb-5'>
@@ -65,7 +62,7 @@ export default function CarteiraPage() {
       <Separator className="my-5"/>
 
       <div className='w-full'>
-        <span className="text-2xl font-extrabold text-secondary">Fazer um deposito (simulado)</span>
+        <h3 className="text-2xl font-extrabold text-secondary">Fazer um deposito (simulado)</h3>
 
         <MakeDepositForm />
       </div>

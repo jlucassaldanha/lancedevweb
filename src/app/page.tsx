@@ -1,16 +1,10 @@
 "use client"
 
-import { CarouselLotCard } from "@/components/my-components/CarouselLotCard";
 import { ErrorCard } from "@/components/my-components/ErrorCard";
-import { MainLotCard } from "@/components/my-components/MainLotCard";
 import { MainPageSection } from '@/components/my-components/MainPageSection';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useListLots from "@/hooks/useListLots";
-import { ArrowRightIcon } from 'lucide-react';
-import Link from 'next/link';
 
 export default function Home() {
   const { 
