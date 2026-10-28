@@ -1,5 +1,6 @@
 "use client"
 
+import { ArrowRightLink } from '@/components/my-components/ArrowRightLink'
 import { BalanceComponent } from '@/components/my-components/BalanceComponent'
 import { CarouselLotCard } from '@/components/my-components/CarouselLotCard'
 import { CarouselWinningCard } from '@/components/my-components/CarouselWinningCard'
@@ -12,7 +13,6 @@ import useAuthRedirect from "@/hooks/useAuthRedirect"
 import useMyLiveLots from '@/hooks/useMyLiveLots'
 import useMyWinnings from '@/hooks/useMyWinnings'
 import useWalletValues from '@/hooks/useWalletValues'
-import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 
 export default function DashboardPage() {
@@ -46,9 +46,9 @@ export default function DashboardPage() {
 
   return (
     <div className="flex flex-col px-10 mb-5">
-      <div className='text-4xl text-secondary font-bold w-full'>
+      <h2 className='text-4xl text-secondary font-bold w-full'>
         Dashboard do Licitante
-      </div>
+      </h2>
 
       {walletError?.message && (
         <div className='w-full m-5'>
@@ -64,7 +64,7 @@ export default function DashboardPage() {
       <Separator className="my-5"/>
 
       <div className='w-full flex flex-col gap-3'>
-        <span className='text-2xl font-bold text-secondary'>Lotes que dei Lance Ao Vivo</span>
+        <h3 className='text-2xl font-bold text-secondary'>Lotes que dei Lance Ao Vivo</h3>
 
         {liveLotsError?.message && (
           <div className='w-full m-5'>
@@ -72,12 +72,10 @@ export default function DashboardPage() {
           </div>
         )}
 
-        <div className='w-full flex justify-end'>
-          <Link href="/live/meus" className="flex gap-2 mb-5">
-            Ver mais Ao Vivo
-            <ArrowRightIcon />
-          </Link>
-        </div>
+        <ArrowRightLink 
+          href='/live/meus'
+          text='Ver mais Ao Vivo'
+        />
         
         {lots.length === 0 ? (
           <span>Você não possui lotes nessa sessão</span>
@@ -102,7 +100,7 @@ export default function DashboardPage() {
       <Separator className="my-5" />
 
       <div className='w-full flex flex-col gap-3'>
-        <span className='text-2xl font-bold text-secondary'>Lotes Arrematados</span>
+        <h3 className='text-2xl font-bold text-secondary'>Lotes Arrematados</h3>
 
         {error?.message && (
           <div className='w-full m-5'>
@@ -110,12 +108,10 @@ export default function DashboardPage() {
           </div>
         )}
 
-        <div className='w-full flex justify-end'>
-          <Link href="/arremates" className="flex gap-2 mb-5">
-            Ver mais Arremates
-            <ArrowRightIcon />
-          </Link>
-        </div>
+        <ArrowRightLink 
+          href='/arremates'
+          text='Ver mais Arremates'
+        />
 
         {winnings.length === 0 ? (
           <span>Você não possui lotes nessa sessão</span>

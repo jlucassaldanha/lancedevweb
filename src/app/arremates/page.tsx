@@ -1,12 +1,11 @@
 "use client"
 
+import { ArrowLeftLink } from '@/components/my-components/ArrowLeftLink'
 import { CarouselWinningCard } from '@/components/my-components/CarouselWinningCard'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
 import { Spinner } from '@/components/ui/spinner'
 import useAuthRedirect from '@/hooks/useAuthRedirect'
 import useMyWinnings from '@/hooks/useMyWinnings'
-import { ArrowLeftIcon } from 'lucide-react'
-import Link from 'next/link'
 
 export default function ArrematesPage() {
   useAuthRedirect('LICITANTE')
@@ -25,16 +24,14 @@ export default function ArrematesPage() {
 
   return (
     <div className="flex flex-col px-10 mb-5">
-      <div>
-        <Link href="/dashboard/licitante" className="flex gap-2 mb-5">
-          <ArrowLeftIcon />
-          Voltar para o Dashboard
-        </Link>
-      </div>
+      <ArrowLeftLink 
+        href='/dashboard/licitante'
+        text='Voltar para o Dashboard'
+      />
       
-      <div className='text-4xl text-secondary font-bold w-full'>
+      <h2 className='text-4xl text-secondary font-bold w-full'>
         Meus Arremates
-      </div>
+      </h2>
 
       {error?.message && (
         <div className='w-full mb-5'>

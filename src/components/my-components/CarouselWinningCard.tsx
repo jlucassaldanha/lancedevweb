@@ -1,8 +1,6 @@
 "use client"
 
 import { MyWinning } from "@/types/lots";
-import Image from "next/image";
-import { Separator } from "../ui/separator";
 import { buttonVariants } from "../ui/button";
 import Link from 'next/link';
 import { ImageTitle } from './ImageTitle';

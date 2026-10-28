@@ -18,7 +18,7 @@ export function ImageTitle({ imgUrl, title }: ImageTitleProps) {
         />
       </div>
       
-      <span className="text-2xl font-serif line-clamp-2 min-h-14 flex items-center">{title}</span>
+      <h3 className="text-2xl font-serif line-clamp-2 min-h-14 flex items-center">{title}</h3>
       
       <Separator />
     </div>

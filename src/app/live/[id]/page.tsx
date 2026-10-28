@@ -1,5 +1,6 @@
 "use client"
 
+import { ArrowLeftLink } from "@/components/my-components/ArrowLeftLink";
 import { BidCard } from "@/components/my-components/BidCard";
 import { ErrorCard } from '@/components/my-components/ErrorCard';
 import { LiveLotCard } from "@/components/my-components/LiveLotCard";
@@ -9,8 +10,6 @@ import { Spinner } from "@/components/ui/spinner";
 import useAuthRedirect from "@/hooks/useAuthRedirect";
 import useLiveLot from "@/hooks/useLiveLot";
 import useWalletValues from "@/hooks/useWalletValues";
-import { ArrowLeftIcon } from "lucide-react";
-import Link from "next/link";
 
 export default function LivePage() {
   useAuthRedirect('LICITANTE')
@@ -39,13 +38,10 @@ export default function LivePage() {
   
   return (
     <div className="flex flex-col px-4 md:px-10 mb-5 gap-5">
-      <div>
-        <Link href="/" className="flex gap-2 mb-5">
-          <ArrowLeftIcon />
-          Voltar aos Lotes
-        </Link>
-      </div>
-
+      <ArrowLeftLink 
+        href="/"
+        text="Voltar aos Lotes"
+      />
       
       {liveError?.message && (
         <div className='w-full m-5'>
@@ -71,7 +67,7 @@ export default function LivePage() {
 
       {(liveData?.bidsHistory.length ?? 0) > 0 ? (
         <div className="mt-5 flex flex-col gap-5">
-          <span className="text-2xl font-extrabold">Lances</span>
+          <h3 className="text-2xl font-extrabold">Lances</h3>
           <Separator />
           
           {liveData?.bidsHistory.map((bid, i) => (

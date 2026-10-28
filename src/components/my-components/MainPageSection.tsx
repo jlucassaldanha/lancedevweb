@@ -1,12 +1,13 @@
 import { PublicLot } from '@/types/lots';
 import { MainLotCard } from './MainLotCard';
 import { Separator } from '../ui/separator';
-import Link from 'next/link';
-import { ArrowRightIcon } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel';
 import { CarouselLotCard } from './CarouselLotCard';
+import { ArrowRightLink } from './ArrowRightLink';
 
-export function MainPageSection({ lotList, placeholder }: { lotList: PublicLot[], placeholder: string}) {
+interface MainPageSectionProps { lotList: PublicLot[], placeholder: string}
+
+export function MainPageSection({ lotList, placeholder }: MainPageSectionProps) {
   return (
     <section className="w-full flex flex-col gap-5">
       {lotList.length > 0 ? (
@@ -19,12 +20,10 @@ export function MainPageSection({ lotList, placeholder }: { lotList: PublicLot[]
         <div>
           <Separator className="my-10"/>
 
-          <div className='w-full flex justify-end'>
-            <Link href="/lotes/live" className="flex gap-2 mb-5">
-              Ver mais Lotes
-              <ArrowRightIcon />
-            </Link>
-          </div>
+          <ArrowRightLink 
+            href='/lotes/live'
+            text='Ver mais Lotes'
+          />
 
           <Carousel opts={{ align: "start" }} className='w-full px-10'>
             <CarouselContent className='-ml-6'>

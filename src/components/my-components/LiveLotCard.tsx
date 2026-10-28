@@ -15,7 +15,7 @@ export function LiveLotCard({ liveLot }: { liveLot?: LiveLot }) {
 
   return (
     <div className="w-full flex flex-col md:flex-row gap-14">
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 ">
         <div className="w-full aspect-square relative bg-muted/40 overflow-hidden flex items-center justify-center">
           <Image 
             src={liveLot?.lot.imageUrl || "/placeholder.png"}

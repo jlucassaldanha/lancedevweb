@@ -30,7 +30,7 @@ export function LotInfoCard({ comprovante, imgUrl, title, receiptData, auditData
       </div>
 
       <div className="flex flex-col gap-5 md:w-2/4">
-        <span className="text-5xl font-serif">{title}</span>
+        <h3 className="text-4xl font-serif">{title}</h3>
         <Separator />
 
         {comprovante ? (

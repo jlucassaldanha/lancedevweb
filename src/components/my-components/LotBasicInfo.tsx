@@ -2,7 +2,9 @@ import { PublicLot } from '@/types/lots';
 import { CountdownTimer } from './CountdownTimer';
 import { Bubble, BubbleContent } from '../ui/bubble';
 
-export function LotBasicInfo({ lot, status }: { lot: PublicLot, status: string}) {
+interface LotsBasicInfoProps { lot: PublicLot, status: string }
+
+export function LotBasicInfo({ lot, status }: LotsBasicInfoProps) {
   return (
     <div className="flex flex-col justify-between h-full gap-2">
       {lot.status === 'LIVE' && <CountdownTimer endTime={lot.endTime}/>}

@@ -1,12 +1,8 @@
 "use client"
 
 import { PublicLot } from "@/types/lots";
-import Image from "next/image";
-import { Separator } from "../ui/separator";
 import { Button, buttonVariants } from "../ui/button";
-import { CountdownTimer } from './CountdownTimer';
 import Link from 'next/link';
-import { Bubble, BubbleContent } from "../ui/bubble";
 import useCancelLot from "@/hooks/useCancelLot";
 import { ErrorCard } from "./ErrorCard";
 import { ImageTitle } from './ImageTitle';
@@ -58,7 +54,6 @@ export function LeiloeiroLotCard({ lot }: { lot: PublicLot }) {
           </div>
         )}
       </div>
-      
     </div>
   )
 }

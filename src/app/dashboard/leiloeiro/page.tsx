@@ -1,5 +1,6 @@
 "use client"
 
+import { ArrowRightLink } from '@/components/my-components/ArrowRightLink'
 import { BalanceComponent } from '@/components/my-components/BalanceComponent'
 import { ErrorCard } from '@/components/my-components/ErrorCard'
 import { LeiloeiroLotCard } from '@/components/my-components/LeiloeiroLotCard'
@@ -10,7 +11,6 @@ import { Spinner } from '@/components/ui/spinner'
 import useAuthRedirect from "@/hooks/useAuthRedirect"
 import useMyPublishedLots from '@/hooks/useMyPublishedLots'
 import useWalletValues from '@/hooks/useWalletValues'
-import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 
 export default function DashboardPage() {
@@ -38,9 +38,9 @@ export default function DashboardPage() {
 
   return (
     <div className="flex flex-col px-10 mb-5">
-      <div className='text-4xl text-secondary font-bold w-full'>
+      <h2 className='text-4xl text-secondary font-bold w-full'>
         Dashboard do Leiloeiro
-      </div>
+      </h2>
 
       {walletError?.message && (
         <div className='w-full m-5'>
@@ -56,7 +56,7 @@ export default function DashboardPage() {
       <Separator className="my-5" />
 
       <div className='w-full flex flex-col gap-3'>
-        <span className='text-2xl font-bold text-secondary'>Meus Lotes</span>
+        <h3 className='text-2xl font-bold text-secondary'>Meus Lotes</h3>
 
         {publishedLotsError?.message && (
           <div className='w-full m-5'>
@@ -64,12 +64,10 @@ export default function DashboardPage() {
           </div>
         )}
 
-        <div className='w-full flex justify-end'>
-          <Link href="/lotes/meus" className="flex gap-2 mb-5">
-            Ver mais Lotes
-            <ArrowRightIcon />
-          </Link>
-        </div>
+        <ArrowRightLink 
+          href='/lotes/meus'
+          text='Ver mais Lotes'
+        />
         
         {lots.length === 0 ? (
           <span>Você não possui lotes publicados</span>
@@ -88,9 +86,7 @@ export default function DashboardPage() {
             </Carousel>
           </div>
         )}
-        
       </div>
-
     </div>
   )
 }

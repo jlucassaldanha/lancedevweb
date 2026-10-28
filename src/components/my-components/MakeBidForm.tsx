@@ -16,9 +16,9 @@ export function MakeBidForm({ avaliableBalance }: MakeBidFormProps) {
 
   return(
     <div className="flex flex-col gap-2">
-      <span className="font-bold text-xl">Dar um Lance</span>
+      <h3 className="font-bold text-xl">Dar um Lance</h3>
       <div className="flex flex-col md:flex-row gap-5 items-center">
-        <div className="w-full flex flex-col gap-2">
+        <div className="w-full md:w-1/4 flex flex-col gap-2">
           <form id="bid-form" onSubmit={handleSubmit(onSubmit)} className="w-full">
             <Controller 
               name='amount'
