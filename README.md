@@ -38,7 +38,6 @@ A aplicação já contempla as seguintes funcionalidades operacionais:
 *   **Criação de Lotes (Painel do Leiloeiro):** Interface de busca integrada à API do *The Metropolitan Museum of Art*, permitindo selecionar a obra, auto-preencher dados e definir regras financeiras (lance inicial, incremento mínimo e intervalo de datas).
 *   **Sala do Lote Ao Vivo:** Disputa em tempo real com atualizações contínuas via *polling*, exibindo o maior lance, histórico mascarado por privacidade e indicadores visuais de liderança ("Você está ganhando" / "Você foi superado").
 
-
 #### Comportamentos Inesperados e Limitações Conhecidas
 
 Devido ao tempo restrito para a entrega do desafio, os seguintes pontos são de conhecimento técnico e assumidos como *trade-offs* da versão atual:
@@ -47,6 +46,11 @@ Devido ao tempo restrito para a entrega do desafio, os seguintes pontos são de 
 2.  **Estados de Carregamento Unificados:** Em determinados cenários de navegação, optou-se por componentes de carregamento (*spinners*) unificados para seções inteiras em vez de seletores granulados por elemento.
 3.  **Tipagem Defensiva com Strings Vazias:** Uso pontual de *strings* vazias (`""`) na inicialização de estados e formulários no lugar de tratamentos mais estritos com `null` ou `undefined`.
 4.  **Semântica HTML Reduzida:** Estruturação visual focada em velocidade de entrega, resultando no uso de tags menos semânticas (`div` e `span`) em certos componentes de layout.
+
+### Responsividade e Compatibilidade Mobile
+
+Embora o projeto não tenha seguido estritamente a abordagem *Mobile-First*, a interface foi inteiramente adaptada e otimizada para garantir uma experiência de uso fluida, consistente e responsiva em diferentes tamanhos de tela (smartphones, tablets e desktops):
+
 
 #### Como rodar a aplicação localmente
 
